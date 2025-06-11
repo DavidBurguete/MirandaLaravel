@@ -1,0 +1,605 @@
+.burger_menu {
+  position: relative;
+  margin: 1.25rem;
+  width: 1.25rem;
+  height: 0.75rem;
+  align-self: center;
+}
+.burger_menu div {
+  position: relative;
+  height: 0.125rem;
+  width: 1.25rem;
+  background-color: black;
+}
+.burger_menu .burger_menu--first {
+  transition: 500ms;
+  top: 0;
+}
+.burger_menu .burger_menu--first--crossed {
+  top: 0.3125rem;
+  rotate: 45deg;
+}
+.burger_menu .burger_menu--middle {
+  transition: 500ms;
+  justify-self: center;
+  top: 0.1875rem;
+}
+.burger_menu .burger_menu--middle--crossed {
+  width: 0%;
+}
+.burger_menu .burger_menu--last {
+  transition: 500ms;
+  top: 0.375rem;
+}
+.burger_menu .burger_menu--last--crossed {
+  top: 0.0625rem;
+  rotate: -45deg;
+}
+
+@media screen and (min-width: 1000px) {
+  .burger_menu {
+    display: none;
+  }
+}
+nav {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  left: 0;
+  top: 4.3125rem;
+  padding: 1rem 1.25rem;
+  transition: 200ms ease-in-out;
+  transform-origin: top;
+  background-color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2901960784);
+  z-index: 12;
+}
+nav.deploy_nav--active {
+  transform: scaleY(1);
+}
+nav.deploy_nav--non_active {
+  transform: scaleY(0);
+}
+nav a {
+  color: #111111;
+  font-family: "Archivo";
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  text-align: left;
+  align-self: flex-start;
+  margin-block: 1rem;
+}
+
+@media screen and (min-width: 1000px) {
+  nav {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    top: 0;
+    padding: 0;
+  }
+  nav.deploy_nav--active, nav.deploy_nav--non_active {
+    transform: scale(1);
+  }
+  nav a {
+    text-align: center;
+  }
+}
+header {
+  display: flex;
+  flex-direction: row;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.2901960784);
+  z-index: 99;
+}
+
+.logo {
+  display: flex;
+  align-self: center;
+  font-family: "Archivo";
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.6px;
+  color: #111111;
+}
+.logo h1 {
+  align-self: center;
+  order: 2;
+  font-size: 0.8rem;
+  width: 4rem;
+  margin-left: 1rem;
+}
+.logo h1 span {
+  font-weight: 400;
+}
+.logo img {
+  order: 1;
+  width: 2.25rem;
+  height: 2.25rem;
+  box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.2509803922);
+}
+
+.header_buttons {
+  margin-left: auto;
+}
+
+.header_buttons--user {
+  background-color: transparent;
+  border: none;
+  margin-block: 1.4rem;
+  margin-right: 1.4rem;
+  line-height: 0;
+}
+
+.header_buttons--search {
+  background-color: transparent;
+  border: none;
+  margin-block: 1.4rem;
+  margin-right: 1.4rem;
+  line-height: 0;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  background-image: url("../img/footer background.png");
+  background-color: rgba(255, 255, 255, 0.98);
+  background-blend-mode: lighten;
+  padding: 1.25rem;
+}
+
+.footer__logo {
+  display: flex;
+  margin-bottom: 3.125rem;
+  font-family: "Archivo";
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2.6px;
+  color: #111111;
+}
+.footer__logo h1 {
+  align-self: center;
+  order: 2;
+  font-size: 1.625rem;
+  width: 4rem;
+  margin-left: 1.75rem;
+}
+.footer__logo h1 span {
+  font-weight: 400;
+}
+.footer__logo img {
+  order: 1;
+  box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.1490196078);
+}
+
+.footer__description {
+  color: #777777;
+  font-family: "Archivo";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.625rem;
+  margin-bottom: 2rem;
+}
+
+.footer__social_media {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.footer__social_media__link {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-right: 0.625rem;
+}
+
+.footer__social_media__link--twitter {
+  background-color: #BEAD8E;
+}
+
+.footer__services--title, .footer__contact--title {
+  font-family: "Old Standard TT";
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer__services__types {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 18.75rem;
+  color: #777777;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 3rem;
+  margin-bottom: 2rem;
+}
+
+.footer__contact {
+  width: 60%;
+}
+
+.footer__contact__contact_card {
+  display: flex;
+  margin-bottom: 3.75rem;
+}
+
+.footer__contact__cc__text {
+  margin-left: 1.25rem;
+  width: 100%;
+}
+
+.footer__contact__cc__text--name {
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+  color: #222222;
+}
+
+.footer__contact__cc__text--type {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 100%;
+  color: #777777;
+}
+
+.footer__legal {
+  background-color: #F8F8F8;
+  width: 100%;
+  padding-block: 0.4375rem;
+}
+
+.footer__legal__text {
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 100%;
+  letter-spacing: -0.48px;
+  color: #222222;
+  padding: 0.75rem 1.25rem;
+}
+
+html, * {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 320px;
+}
+
+button, input[type=submit] {
+  cursor: pointer;
+}
+
+.main__header {
+  position: relative;
+  background-image: url("../img/hotel-room-2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: white;
+}
+.main__header__bg_color {
+  background-color: rgba(51, 51, 51, 0.7882352941);
+}
+.main__header__text {
+  padding-inline: 1.25rem;
+  padding-block: 4.6875rem;
+}
+.main__header__text--luxury {
+  width: 80%;
+  margin-bottom: 1.25rem;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+}
+.main__header__text--details {
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 3.75rem;
+  letter-spacing: -1.2px;
+}
+.main__header__buttons {
+  padding-inline: 1.25rem;
+  padding-bottom: 4.6875rem;
+}
+.main__header__buttons__tour {
+  width: 70%;
+  padding: 1.25rem;
+  border: none;
+  background-color: #BEAD8E;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+.main__header__buttons__learn {
+  width: 70%;
+  padding: 1.25rem;
+  border: none;
+  background-color: #BEAD8E;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: white;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.33);
+}
+
+.breadcrumbs {
+  position: absolute;
+  bottom: 0;
+  right: 1.25rem;
+  padding: 1rem 1.875rem;
+  background-color: white;
+  color: #222222;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 100%;
+  letter-spacing: -0.48px;
+}
+.breadcrumbs span {
+  color: #BEAD8E;
+}
+
+.video {
+  margin: 3.75rem 1.25rem;
+  width: calc(100% - 2.5rem);
+}
+
+.main__description {
+  margin-block: -1rem 3.125rem;
+  margin-inline: 1.25rem;
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 100%;
+  letter-spacing: -1.16px;
+  color: #222222;
+}
+
+.main__availabilities {
+  margin: 0 1.25rem 3.125rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.main__availabilities__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  max-width: 10rem;
+  width: 50%;
+  height: 10rem;
+}
+.main__availabilities__card > * {
+  margin: 0 auto;
+}
+.main__availabilities__card img {
+  width: fit-content;
+}
+.main__availabilities__card p {
+  padding-top: 0.75rem;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.75rem;
+  line-height: 0.875rem;
+  letter-spacing: 2.4px;
+  text-transform: uppercase;
+  color: #222222;
+}
+.main__availabilities__card--inverted {
+  background-color: #BEAD8E;
+}
+.main__availabilities__card--inverted p {
+  color: white;
+}
+
+.restaurant {
+  margin: 1.25rem;
+  padding: 1.25rem;
+}
+.restaurant img {
+  width: 100%;
+}
+.restaurant__text {
+  padding-top: 2rem;
+}
+.restaurant__text__title {
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: #777777;
+}
+.restaurant__text__info {
+  padding-block: 2rem;
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 100%;
+  letter-spacing: -1.05px;
+  color: #222222;
+}
+.restaurant__text__description {
+  font-family: "Archivo";
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: #777777;
+}
+.restaurant__text__look {
+  width: 75%;
+  padding: 1.25rem;
+  border: none;
+  background-color: #BEAD8E;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: white;
+  margin-top: 1rem;
+  box-shadow: 0px 14px 24px 0px rgba(190, 173, 142, 0.3607843137);
+}
+
+.features {
+  padding: 1.25rem;
+  background-color: #222222;
+}
+.features__title {
+  margin-top: 1.75rem;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  text-align: center;
+  color: white;
+}
+.features__description {
+  margin-block: 1rem;
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 3.75rem;
+  letter-spacing: -1.2px;
+  text-align: center;
+  color: white;
+}
+.features__card {
+  position: relative;
+  padding: 4.5rem 1.125rem;
+  margin-bottom: 2.75rem;
+  background-color: #292929;
+}
+.features__card__number {
+  position: absolute;
+  top: -0.5rem;
+  right: 0.75rem;
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 7.5rem;
+  line-height: 8.125rem;
+  color: #222222;
+}
+.features__card__title {
+  margin-block: 1.5rem;
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 1.875rem;
+  line-height: 1.875rem;
+  letter-spacing: -0.9px;
+  color: white;
+}
+.features__card__description {
+  font-family: "Archivo";
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  color: white;
+}
+
+.swiper_complete .swiper-pagination-bullet, .swiper_only_pagination .swiper-pagination-bullet {
+  background: #333333;
+  opacity: 1;
+}
+
+.swiper_complete .swiper-pagination-bullet-active, .swiper_only_pagination .swiper-pagination-bullet-active {
+  background: #BEAD8E;
+}
+
+.facts {
+  margin: 3.75rem 1.25rem;
+}
+.facts__title {
+  font-family: "Archivo";
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 100%;
+  letter-spacing: 2.8px;
+  text-transform: uppercase;
+  color: #777777;
+}
+.facts__description {
+  margin-top: 1.5rem;
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 3.5rem;
+  line-height: 3.75rem;
+  letter-spacing: -1.2px;
+  color: #222222;
+}
+.facts__type {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+.facts__type__card {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  padding: 1rem;
+}
+.facts__type__card__text {
+  margin-left: 1rem;
+  width: 100%;
+}
+.facts__type__card__text__number {
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 3.75rem;
+  line-height: 3.75rem;
+  letter-spacing: -1.8px;
+  color: #222222;
+}
+.facts__type__card__text__text {
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1rem;
+  color: #777777;
+}
+.facts__image {
+  margin-block: 2.75rem;
+}
+.facts .swiper_complete .swiper-pagination-bullet, .facts .swiper_only_pagination .swiper-pagination-bullet {
+  background: #EDEDED;
+  opacity: 1;
+}
+.facts .swiper_complete .swiper-pagination-bullet-active, .facts .swiper_only_pagination .swiper-pagination-bullet-active {
+  background: #BEAD8E;
+}
+
+/*# sourceMappingURL=about_us.css.map */
