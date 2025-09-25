@@ -42,7 +42,7 @@
   }
 }
 nav {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -60,6 +60,9 @@ nav.deploy_nav--active {
 }
 nav.deploy_nav--non_active {
   transform: scaleY(0);
+}
+nav.header--nav {
+  display: none;
 }
 nav a {
   color: #111111;
@@ -81,13 +84,44 @@ nav a {
     padding: 0;
   }
   nav.deploy_nav--active, nav.deploy_nav--non_active {
-    transform: scale(1);
+    display: none;
+  }
+  nav.header--nav {
+    display: flex;
+    position: relative;
+    width: 40%;
+    left: 0;
+    padding: 0;
+    background-color: white;
+    box-shadow: none;
+    z-index: 12;
+  }
+  nav.header--nav a {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: 25%;
+    align-content: center;
   }
   nav a {
     text-align: center;
   }
 }
-header {
+@media screen and (min-width: 1051px) {
+  nav.header--nav {
+    left: 3rem;
+  }
+}
+.desktop_header {
+  display: none;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 100%;
+  color: white;
+}
+
+.header--wrapper {
   display: flex;
   flex-direction: row;
   position: sticky;
@@ -103,6 +137,7 @@ header {
   font-family: "Archivo";
   font-weight: 700;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 2.6px;
   color: #111111;
 }
@@ -110,7 +145,7 @@ header {
   align-self: center;
   order: 2;
   font-size: 0.8rem;
-  width: 4rem;
+  width: 8.5rem;
   margin-left: 1rem;
 }
 .logo h1 span {
@@ -134,6 +169,13 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--user {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
 
 .header_buttons--search {
   background-color: transparent;
@@ -142,17 +184,68 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--search {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  header {
+    position: relative;
+    background-color: #222222;
+    height: 6.25rem;
+  }
+  .desktop_header {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 0.6875rem 0;
+    width: 74%;
+  }
+  .header--wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 1.25rem;
+    width: 74%;
+    height: 7.5rem;
+    box-shadow: none;
+  }
+  .logo h1 {
+    font-size: 1.6rem;
+  }
+  .logo img {
+    order: 1;
+    width: 5rem;
+    height: 5rem;
+    box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.2509803922);
+  }
+  .header_buttons {
+    position: relative;
+    right: 0;
+  }
+}
+@media screen and (min-width: 1246px) {
+  .header_buttons {
+    position: relative;
+    right: 10%;
+  }
+}
+footer {
+  background-image: url("../img/footer background.png");
+  background-color: rgba(255, 255, 255, 0.98);
+  background-blend-mode: lighten;
+}
 
 .footer {
   display: flex;
   flex-direction: column;
-  background-image: url("../img/footer background.png");
-  background-color: rgba(255, 255, 255, 0.98);
-  background-blend-mode: lighten;
   padding: 1.25rem;
 }
 
-.footer__logo {
+.footer__data__logo {
   display: flex;
   margin-bottom: 3.125rem;
   font-family: "Archivo";
@@ -161,22 +254,22 @@ header {
   letter-spacing: 2.6px;
   color: #111111;
 }
-.footer__logo h1 {
+.footer__data__logo h1 {
   align-self: center;
   order: 2;
   font-size: 1.625rem;
   width: 4rem;
   margin-left: 1.75rem;
 }
-.footer__logo h1 span {
+.footer__data__logo h1 span {
   font-weight: 400;
 }
-.footer__logo img {
+.footer__data__logo img {
   order: 1;
   box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.1490196078);
 }
 
-.footer__description {
+.footer__data__description {
   color: #777777;
   font-family: "Archivo";
   font-weight: 400;
@@ -185,12 +278,12 @@ header {
   margin-bottom: 2rem;
 }
 
-.footer__social_media {
+.footer__data__social_media {
   display: flex;
   margin-bottom: 2rem;
 }
 
-.footer__social_media__link {
+.footer__data__social_media__link {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -198,9 +291,10 @@ header {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.625rem;
+  background-color: #F8F8F8;
 }
 
-.footer__social_media__link--twitter {
+.footer__data__social_media__link--twitter {
   background-color: #BEAD8E;
 }
 
@@ -271,6 +365,37 @@ header {
   padding: 0.75rem 1.25rem;
 }
 
+@media screen and (min-width: 1000px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 65%;
+    height: 34.5rem;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .footer__data, .footer__services, .footer__contact {
+    padding-block: 6.25rem;
+  }
+  .footer__data {
+    width: 25%;
+  }
+  .footer__services {
+    width: 33%;
+  }
+  .footer__contact {
+    width: 20%;
+  }
+  .footer__legal {
+    display: flex;
+    justify-content: space-around;
+    height: 5rem;
+    padding: 0;
+  }
+  .footer__legal__text {
+    padding: 2rem 1.25rem;
+  }
+}
 html, * {
   box-sizing: border-box;
   margin: 0;
@@ -310,7 +435,7 @@ button, input[type=submit] {
   letter-spacing: 2.8px;
   text-transform: uppercase;
 }
-.main__header__text--details {
+.main__header__text--details, .main__header__text--details > pre {
   font-family: "Old Standard TT";
   font-weight: 400;
   font-size: 3.5rem;
@@ -368,6 +493,58 @@ button, input[type=submit] {
   color: #BEAD8E;
 }
 
+@media screen and (min-width: 1000px) {
+  .main__header {
+    height: 22rem;
+  }
+  .main__header__bg_color {
+    height: 22rem;
+  }
+  .main__header__text {
+    position: relative;
+    left: 20%;
+    top: 6.5rem;
+    width: 50%;
+  }
+  .main__header__text--details {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -2.16px;
+  }
+  .main__header--index {
+    height: 43.75rem;
+  }
+  .main__header--index__bg_color {
+    height: 43.75rem;
+  }
+  .main__header--index__text {
+    padding-bottom: 2rem;
+  }
+  .main__header--index__text--luxury {
+    font-size: 0.875rem;
+  }
+  .main__header--index__text--details, .main__header--index__text--details > pre {
+    font-size: 7.5rem;
+    line-height: 8.125rem;
+    letter-spacing: -3.6px;
+  }
+  .main__header--index__buttons {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 6.5rem;
+    left: 20%;
+    width: 50%;
+  }
+  .main__header--index__buttons button {
+    margin: 0 1.875rem 0 0;
+    width: 13.5rem;
+  }
+  .breadcrumbs {
+    right: 20%;
+    padding: 1.25rem 2.5rem;
+  }
+}
 .main__availability, .main__arrival {
   padding: 2.5rem;
 }
@@ -476,7 +653,7 @@ button, input[type=submit] {
   }
 }
 nav {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -494,6 +671,9 @@ nav.deploy_nav--active {
 }
 nav.deploy_nav--non_active {
   transform: scaleY(0);
+}
+nav.header--nav {
+  display: none;
 }
 nav a {
   color: #111111;
@@ -515,13 +695,44 @@ nav a {
     padding: 0;
   }
   nav.deploy_nav--active, nav.deploy_nav--non_active {
-    transform: scale(1);
+    display: none;
+  }
+  nav.header--nav {
+    display: flex;
+    position: relative;
+    width: 40%;
+    left: 0;
+    padding: 0;
+    background-color: white;
+    box-shadow: none;
+    z-index: 12;
+  }
+  nav.header--nav a {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: 25%;
+    align-content: center;
   }
   nav a {
     text-align: center;
   }
 }
-header {
+@media screen and (min-width: 1051px) {
+  nav.header--nav {
+    left: 3rem;
+  }
+}
+.desktop_header {
+  display: none;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 100%;
+  color: white;
+}
+
+.header--wrapper {
   display: flex;
   flex-direction: row;
   position: sticky;
@@ -537,6 +748,7 @@ header {
   font-family: "Archivo";
   font-weight: 700;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 2.6px;
   color: #111111;
 }
@@ -544,7 +756,7 @@ header {
   align-self: center;
   order: 2;
   font-size: 0.8rem;
-  width: 4rem;
+  width: 8.5rem;
   margin-left: 1rem;
 }
 .logo h1 span {
@@ -568,6 +780,13 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--user {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
 
 .header_buttons--search {
   background-color: transparent;
@@ -576,17 +795,68 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--search {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  header {
+    position: relative;
+    background-color: #222222;
+    height: 6.25rem;
+  }
+  .desktop_header {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 0.6875rem 0;
+    width: 74%;
+  }
+  .header--wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 1.25rem;
+    width: 74%;
+    height: 7.5rem;
+    box-shadow: none;
+  }
+  .logo h1 {
+    font-size: 1.6rem;
+  }
+  .logo img {
+    order: 1;
+    width: 5rem;
+    height: 5rem;
+    box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.2509803922);
+  }
+  .header_buttons {
+    position: relative;
+    right: 0;
+  }
+}
+@media screen and (min-width: 1246px) {
+  .header_buttons {
+    position: relative;
+    right: 10%;
+  }
+}
+footer {
+  background-image: url("../img/footer background.png");
+  background-color: rgba(255, 255, 255, 0.98);
+  background-blend-mode: lighten;
+}
 
 .footer {
   display: flex;
   flex-direction: column;
-  background-image: url("../img/footer background.png");
-  background-color: rgba(255, 255, 255, 0.98);
-  background-blend-mode: lighten;
   padding: 1.25rem;
 }
 
-.footer__logo {
+.footer__data__logo {
   display: flex;
   margin-bottom: 3.125rem;
   font-family: "Archivo";
@@ -595,22 +865,22 @@ header {
   letter-spacing: 2.6px;
   color: #111111;
 }
-.footer__logo h1 {
+.footer__data__logo h1 {
   align-self: center;
   order: 2;
   font-size: 1.625rem;
   width: 4rem;
   margin-left: 1.75rem;
 }
-.footer__logo h1 span {
+.footer__data__logo h1 span {
   font-weight: 400;
 }
-.footer__logo img {
+.footer__data__logo img {
   order: 1;
   box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.1490196078);
 }
 
-.footer__description {
+.footer__data__description {
   color: #777777;
   font-family: "Archivo";
   font-weight: 400;
@@ -619,12 +889,12 @@ header {
   margin-bottom: 2rem;
 }
 
-.footer__social_media {
+.footer__data__social_media {
   display: flex;
   margin-bottom: 2rem;
 }
 
-.footer__social_media__link {
+.footer__data__social_media__link {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -632,9 +902,10 @@ header {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.625rem;
+  background-color: #F8F8F8;
 }
 
-.footer__social_media__link--twitter {
+.footer__data__social_media__link--twitter {
   background-color: #BEAD8E;
 }
 
@@ -705,6 +976,37 @@ header {
   padding: 0.75rem 1.25rem;
 }
 
+@media screen and (min-width: 1000px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 65%;
+    height: 34.5rem;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .footer__data, .footer__services, .footer__contact {
+    padding-block: 6.25rem;
+  }
+  .footer__data {
+    width: 25%;
+  }
+  .footer__services {
+    width: 33%;
+  }
+  .footer__contact {
+    width: 20%;
+  }
+  .footer__legal {
+    display: flex;
+    justify-content: space-around;
+    height: 5rem;
+    padding: 0;
+  }
+  .footer__legal__text {
+    padding: 2rem 1.25rem;
+  }
+}
 html, * {
   box-sizing: border-box;
   margin: 0;
@@ -744,7 +1046,7 @@ button, input[type=submit] {
   letter-spacing: 2.8px;
   text-transform: uppercase;
 }
-.main__header__text--details {
+.main__header__text--details, .main__header__text--details > pre {
   font-family: "Old Standard TT";
   font-weight: 400;
   font-size: 3.5rem;
@@ -802,6 +1104,58 @@ button, input[type=submit] {
   color: #BEAD8E;
 }
 
+@media screen and (min-width: 1000px) {
+  .main__header {
+    height: 22rem;
+  }
+  .main__header__bg_color {
+    height: 22rem;
+  }
+  .main__header__text {
+    position: relative;
+    left: 20%;
+    top: 6.5rem;
+    width: 50%;
+  }
+  .main__header__text--details {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -2.16px;
+  }
+  .main__header--index {
+    height: 43.75rem;
+  }
+  .main__header--index__bg_color {
+    height: 43.75rem;
+  }
+  .main__header--index__text {
+    padding-bottom: 2rem;
+  }
+  .main__header--index__text--luxury {
+    font-size: 0.875rem;
+  }
+  .main__header--index__text--details, .main__header--index__text--details > pre {
+    font-size: 7.5rem;
+    line-height: 8.125rem;
+    letter-spacing: -3.6px;
+  }
+  .main__header--index__buttons {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 6.5rem;
+    left: 20%;
+    width: 50%;
+  }
+  .main__header--index__buttons button {
+    margin: 0 1.875rem 0 0;
+    width: 13.5rem;
+  }
+  .breadcrumbs {
+    right: 20%;
+    padding: 1.25rem 2.5rem;
+  }
+}
 .swiper_complete .swiper-pagination, .swiper_only_pagination .swiper-pagination {
   bottom: 0;
 }
@@ -855,7 +1209,7 @@ button, input[type=submit] {
   margin-right: 0.625rem;
 }
 
-.custom-button-prev--only_navigation, .custom-button-next--only_navigation {
+.swiper .custom-button-prev--only_navigation, .swiper .custom-button-next--only_navigation {
   top: 6.25rem;
   position: absolute;
   display: inline-flex;
@@ -866,6 +1220,7 @@ button, input[type=submit] {
   width: 2rem;
   height: 2rem;
   line-height: 1.25rem;
+  cursor: pointer;
   z-index: 3;
 }
 
@@ -966,6 +1321,36 @@ button, input[type=submit] {
   width: 70%;
 }
 
+@media screen and (min-width: 1000px) {
+  .main__arrival form {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+    margin: 0 auto;
+  }
+  .main__arrival form label {
+    width: 30%;
+    margin-right: 1.875rem;
+  }
+  .main__arrival form label input {
+    padding-block: 0.875rem;
+    padding-left: 1.5rem;
+    border-bottom: 2px solid #BEAD8E;
+    background-color: transparent;
+    font-family: "Roboto";
+  }
+  .main__arrival form label .input_background_image {
+    background-position-x: left;
+  }
+  .main__arrival form label .input_background_image__calendar {
+    background-image: url("../img/calendar_dark.svg");
+  }
+  .main__arrival form input[type=submit] {
+    margin-left: auto;
+    margin-block: 1.25rem;
+    width: auto;
+  }
+}
 .about {
   margin: 3.5rem 1.25rem 0 1.25rem;
 }
@@ -1049,6 +1434,64 @@ button, input[type=submit] {
   color: white;
 }
 
+@media screen and (min-width: 1000px) {
+  .about {
+    display: flex;
+    justify-content: space-between;
+    width: 60%;
+    margin: 9rem auto;
+  }
+  .about__text {
+    order: 3;
+    width: 40%;
+  }
+  .about__text__name {
+    line-height: 100%;
+  }
+  .about__text__title {
+    font-size: 5rem;
+    line-height: 5.625rem;
+    letter-spacing: -2.4px;
+  }
+  .about__text__book {
+    width: 50%;
+    padding: 1.25rem;
+    border: none;
+    background-color: #BEAD8E;
+    font-family: "Archivo";
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 100%;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    color: white;
+  }
+  .about__team {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    padding: 0;
+  }
+  .about__team__card {
+    order: 1;
+    box-shadow: 0px 8px 16px 0px rgba(34, 34, 34, 0.0196078431);
+    margin-bottom: 1.875rem;
+  }
+  .about__team__img {
+    order: 2;
+  }
+  .about__luxury {
+    order: 2;
+    position: relative;
+    width: 25%;
+    padding: 0;
+    top: 1.875rem;
+  }
+  .about__luxury__img {
+    margin-bottom: 1.875rem;
+  }
+}
 .popular_rooms {
   position: relative;
 }
@@ -1074,6 +1517,27 @@ button, input[type=submit] {
   color: #222222;
 }
 
+@media screen and (min-width: 1000px) {
+  .popular_rooms--room {
+    margin-block: 0.9375rem;
+    font-family: "Old Standard TT";
+    font-weight: 400;
+    font-size: 5rem;
+    line-height: 5rem;
+    letter-spacing: -2.4px;
+    text-align: center;
+    color: #222222;
+  }
+  .popular__wrapper {
+    display: flex;
+    margin-bottom: 7rem;
+    padding-bottom: 7rem;
+  }
+  .popular__wrapper__slide {
+    width: 50%;
+    padding: 5rem 0.5rem;
+  }
+}
 .room__card {
   position: relative;
   margin: 1.25rem 0;
@@ -1099,7 +1563,67 @@ button, input[type=submit] {
 .room__card__bottom__type {
   margin-top: 1.25rem;
 }
+.room__card__bottom span {
+  font-size: 2rem;
+}
 
+@media screen and (min-width: 1000px) {
+  .room__card__icons, .room__card__bottom {
+    opacity: 0;
+    transition: 200ms ease-in-out;
+  }
+  .swiper-slide-active .room__card__icons, .swiper-slide-active .room__card__bottom {
+    opacity: 1;
+  }
+  .room__card__bottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    bottom: 2rem;
+    padding: 2.375rem;
+  }
+  .room__card__bottom__type {
+    order: 1;
+    width: 50%;
+    margin: 0;
+    font-size: 2.25rem;
+    letter-spacing: -1.08px;
+    text-align: left;
+    line-height: 100%;
+  }
+  .room__card__bottom__description {
+    order: 3;
+    width: 70%;
+    padding: 0.5rem 0 0 0;
+    text-align: left;
+  }
+  .room__card__bottom__pricing {
+    order: 2;
+    width: 30%;
+    margin: 0;
+  }
+  .room__card__bottom__pricing__price {
+    width: 100%;
+    align-self: flex-end;
+    text-align: right;
+  }
+  .room__card__bottom__pricing span {
+    font-size: 2.5rem;
+  }
+  .swiper .custom-button-prev--only_navigation, .swiper .custom-button-next--only_navigation {
+    top: 25%;
+    width: 5rem;
+    height: 5rem;
+    font-size: 2.5rem;
+  }
+  .custom-button-prev--only_navigation {
+    left: 18%;
+  }
+  .custom-button-next--only_navigation {
+    right: 18%;
+  }
+}
 .place {
   padding: 3.5rem 1.25rem;
   background-color: #222222;
@@ -1146,6 +1670,57 @@ button, input[type=submit] {
   color: white;
 }
 
+@media screen and (min-width: 1000px) {
+  .place {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 6.75rem;
+    position: relative;
+    padding: 7.5rem 20%;
+  }
+  .place__second_panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30%;
+    height: 100%;
+    background-color: #AD9D82;
+  }
+  .place__name {
+    grid-column: 1;
+  }
+  .place__title {
+    grid-column: 1;
+    font-size: 5rem;
+    line-height: 5.25rem;
+    letter-spacing: -2.4px;
+  }
+  .place__description {
+    grid-column: 1;
+  }
+  .place .video {
+    grid-column: 2/3;
+    grid-row: 1/5;
+    height: 100%;
+    margin: 0;
+    z-index: 1;
+  }
+  .place__book {
+    grid-column: 1;
+    margin-top: 2rem;
+    width: 70%;
+    padding: 1.25rem;
+    border: none;
+    background-color: #BEAD8E;
+    font-family: "Archivo";
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 100%;
+    letter-spacing: 2.8px;
+    text-transform: uppercase;
+    color: white;
+  }
+}
 .features {
   padding: 1.25rem;
 }
@@ -1169,11 +1744,11 @@ button, input[type=submit] {
   letter-spacing: -1.2px;
   text-align: center;
 }
-.features__card {
+.features__main__card {
   position: relative;
   padding: 4.5rem 1.125rem 3rem 1.125rem;
 }
-.features__card__number {
+.features__main__card__number {
   position: absolute;
   top: -0.5rem;
   right: 0.75rem;
@@ -1183,7 +1758,7 @@ button, input[type=submit] {
   line-height: 8.125rem;
   color: rgba(34, 34, 34, 0.04);
 }
-.features__card__title {
+.features__main__card__title {
   margin-block: 1.5rem;
   font-family: "Old Standard TT";
   font-weight: 400;
@@ -1192,7 +1767,7 @@ button, input[type=submit] {
   letter-spacing: -0.9px;
   color: #222222;
 }
-.features__card__description {
+.features__main__card__description {
   font-family: "Archivo";
   font-weight: 400;
   font-size: 0.875rem;
@@ -1200,6 +1775,53 @@ button, input[type=submit] {
   color: #777777;
 }
 
+@media screen and (min-width: 1000px) {
+  .features {
+    margin-top: 7.5rem;
+  }
+  .features__description {
+    margin-block: 2.5rem;
+    font-size: 5rem;
+    line-height: 5rem;
+    letter-spacing: -2.4px;
+  }
+  .features__main {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 60%;
+    margin: 0 auto;
+  }
+  .features__main__card {
+    position: relative;
+    padding: 4.5rem 1.5rem 3rem 1.5rem;
+  }
+  .features__main__card__number {
+    position: absolute;
+    top: -0.5rem;
+    right: 0.75rem;
+    font-family: "Archivo";
+    font-weight: 700;
+    font-size: 7.5rem;
+    line-height: 8.125rem;
+    color: rgba(34, 34, 34, 0.04);
+  }
+  .features__main__card__title {
+    margin-block: 1.5rem;
+    font-family: "Old Standard TT";
+    font-weight: 400;
+    font-size: 1.875rem;
+    line-height: 1.875rem;
+    letter-spacing: -0.9px;
+    color: #222222;
+  }
+  .features__main__card__description {
+    font-family: "Archivo";
+    font-weight: 400;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    color: #777777;
+  }
+}
 .swiper_complete .swiper-pagination-bullet, .swiper_only_pagination .swiper-pagination-bullet {
   background: #EDEDED;
   opacity: 1;
@@ -1214,6 +1836,9 @@ button, input[type=submit] {
   padding: 3.5rem 1.25rem;
 }
 .menu__icon {
+  display: none;
+}
+.menu__icon--cropped {
   position: relative;
   left: calc(100% - 5.5625rem + 1.25rem);
 }
@@ -1243,6 +1868,9 @@ button, input[type=submit] {
   width: 7.5rem;
 }
 .menu__card__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   margin-left: 2rem;
 }
 .menu__card__text__name {
@@ -1261,39 +1889,104 @@ button, input[type=submit] {
   color: #222222;
 }
 
-.swiper-slide {
-  margin-bottom: 2rem;
+@media screen and (min-width: 1000px) {
+  .menu {
+    width: 60%;
+    margin: 0 auto;
+  }
+  .menu__icon {
+    display: block;
+    position: relative;
+    top: 2.375rem;
+    right: 30%;
+    width: 14.25rem;
+    z-index: -1;
+  }
+  .menu__icon--cropped {
+    display: none;
+  }
+  .menu__title {
+    font-size: 5rem;
+    line-height: 100%;
+    letter-spacing: -2.4px;
+  }
+  .menu__card:hover {
+    transition: 150ms ease-in-out;
+    background-color: #222222;
+    color: white;
+  }
+  .menu__card:hover .menu__card__text__name {
+    color: white;
+    transition: 150ms ease-in-out;
+  }
+  .menu__card:hover .menu__card__text__description {
+    color: white;
+    transition: 150ms ease-in-out;
+  }
+  .menu__card__text {
+    margin: 1.25rem 2rem;
+  }
+  .menu__card__text__description {
+    width: 75%;
+  }
 }
-
-.swiper .swiper-button-prev, .swiper .swiper-button-next {
+.menu .swiper-button-prev, .menu .swiper-button-next {
   top: auto;
   bottom: 0;
   width: 2rem;
   height: 2rem;
   z-index: 3;
 }
-
-.swiper .swiper-button-prev::after, .swiper .swiper-button-next::after {
+.menu .swiper-button-prev::after, .menu .swiper-button-next::after {
   content: none;
 }
-
-.swiper .swiper-button-prev {
+.menu .swiper-button-prev {
   color: #111111;
-  background-color: white;
+  background-color: #F8F8F8;
   left: auto;
   right: 4rem;
 }
-
-.swiper .swiper-button-next {
+.menu .swiper-button-next {
   color: white;
   background-color: #BEAD8E;
   right: 1rem;
 }
 
-.food_image {
+@media screen and (min-width: 1000px) {
+  .menu .swiper-button-prev, .menu .swiper-button-next {
+    position: absolute;
+    top: 10rem;
+    width: 4.375rem;
+    height: 4.375rem;
+    z-index: 99;
+  }
+  .menu .swiper-button-prev {
+    right: 6.5rem;
+  }
+}
+.menu_pictures .swiper-slide {
+  margin-bottom: 2rem;
+}
+.menu_pictures__images__image {
   padding: 1.25rem;
 }
 
+@media screen and (min-width: 1000px) {
+  .menu_pictures {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 60%;
+    margin: 0 auto;
+  }
+  .menu_pictures__images {
+    justify-content: space-between;
+  }
+  .menu_pictures__images__image {
+    width: 30%;
+    padding: 0;
+  }
+}
 .info {
   margin-block: 3rem;
   padding: 3rem 5.125rem;
@@ -1321,6 +2014,33 @@ button, input[type=submit] {
   font-size: 1rem;
   line-height: 136%;
   color: #999999;
+}
+
+@media screen and (min-width: 1000px) {
+  .info {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 60%;
+    margin: 3rem auto;
+    text-align: left;
+  }
+  .info__card, .info__card:not(:last-child) {
+    max-width: 33%;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  .info__card__number {
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 3.75rem;
+    line-height: 136%;
+    color: white;
+  }
+  .info__card__number span {
+    font-size: 1rem;
+  }
 }
 
 /*# sourceMappingURL=index.css.map */

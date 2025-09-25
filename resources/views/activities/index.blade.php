@@ -11,7 +11,7 @@
     <div class="container">
         <h1>Activity List</h1>
 
-        <a href="{{ route('activities.create') }}" class="btn btn-primary mb-3">Create New Activity</a>
+        <a href="/{{ route('activities.create') }}" class="btn btn-primary mb-3">Create New Activity</a>
 
         @if($activities->count())
         <table class="table table-bordered">
@@ -38,8 +38,8 @@
                     <td>{{ $activity->notes }}</td>
                     <td>{{ $activity->satisfaction ?? 'Not rated' }}</td>
                     <td>
-                        <a href="{{ route('activities.show', $activity) }}" class="btn btn-sm btn-info">View</a>
-                        <a href="{{ route('activities.edit', $activity) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <a href="/{{ route('activities.show', $activity) }}" class="btn btn-sm btn-info">View</a>
+                        <a href="/{{ route('activities.edit', $activity) }}" class="btn btn-sm btn-warning">Edit</a>
                         <form action="{{ route('activities.destroy', $activity) }}" method="POST" style="display:inline;">
                             @csrf
                             @method('DELETE')

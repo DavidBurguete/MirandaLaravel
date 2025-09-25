@@ -42,7 +42,7 @@
   }
 }
 nav {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -60,6 +60,9 @@ nav.deploy_nav--active {
 }
 nav.deploy_nav--non_active {
   transform: scaleY(0);
+}
+nav.header--nav {
+  display: none;
 }
 nav a {
   color: #111111;
@@ -81,13 +84,44 @@ nav a {
     padding: 0;
   }
   nav.deploy_nav--active, nav.deploy_nav--non_active {
-    transform: scale(1);
+    display: none;
+  }
+  nav.header--nav {
+    display: flex;
+    position: relative;
+    width: 40%;
+    left: 0;
+    padding: 0;
+    background-color: white;
+    box-shadow: none;
+    z-index: 12;
+  }
+  nav.header--nav a {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: 25%;
+    align-content: center;
   }
   nav a {
     text-align: center;
   }
 }
-header {
+@media screen and (min-width: 1051px) {
+  nav.header--nav {
+    left: 3rem;
+  }
+}
+.desktop_header {
+  display: none;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 100%;
+  color: white;
+}
+
+.header--wrapper {
   display: flex;
   flex-direction: row;
   position: sticky;
@@ -103,6 +137,7 @@ header {
   font-family: "Archivo";
   font-weight: 700;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 2.6px;
   color: #111111;
 }
@@ -110,7 +145,7 @@ header {
   align-self: center;
   order: 2;
   font-size: 0.8rem;
-  width: 4rem;
+  width: 8.5rem;
   margin-left: 1rem;
 }
 .logo h1 span {
@@ -134,6 +169,13 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--user {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
 
 .header_buttons--search {
   background-color: transparent;
@@ -142,17 +184,68 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--search {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  header {
+    position: relative;
+    background-color: #222222;
+    height: 6.25rem;
+  }
+  .desktop_header {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 0.6875rem 0;
+    width: 74%;
+  }
+  .header--wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 1.25rem;
+    width: 74%;
+    height: 7.5rem;
+    box-shadow: none;
+  }
+  .logo h1 {
+    font-size: 1.6rem;
+  }
+  .logo img {
+    order: 1;
+    width: 5rem;
+    height: 5rem;
+    box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.2509803922);
+  }
+  .header_buttons {
+    position: relative;
+    right: 0;
+  }
+}
+@media screen and (min-width: 1246px) {
+  .header_buttons {
+    position: relative;
+    right: 10%;
+  }
+}
+footer {
+  background-image: url("../img/footer background.png");
+  background-color: rgba(255, 255, 255, 0.98);
+  background-blend-mode: lighten;
+}
 
 .footer {
   display: flex;
   flex-direction: column;
-  background-image: url("../img/footer background.png");
-  background-color: rgba(255, 255, 255, 0.98);
-  background-blend-mode: lighten;
   padding: 1.25rem;
 }
 
-.footer__logo {
+.footer__data__logo {
   display: flex;
   margin-bottom: 3.125rem;
   font-family: "Archivo";
@@ -161,22 +254,22 @@ header {
   letter-spacing: 2.6px;
   color: #111111;
 }
-.footer__logo h1 {
+.footer__data__logo h1 {
   align-self: center;
   order: 2;
   font-size: 1.625rem;
   width: 4rem;
   margin-left: 1.75rem;
 }
-.footer__logo h1 span {
+.footer__data__logo h1 span {
   font-weight: 400;
 }
-.footer__logo img {
+.footer__data__logo img {
   order: 1;
   box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.1490196078);
 }
 
-.footer__description {
+.footer__data__description {
   color: #777777;
   font-family: "Archivo";
   font-weight: 400;
@@ -185,12 +278,12 @@ header {
   margin-bottom: 2rem;
 }
 
-.footer__social_media {
+.footer__data__social_media {
   display: flex;
   margin-bottom: 2rem;
 }
 
-.footer__social_media__link {
+.footer__data__social_media__link {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -198,9 +291,10 @@ header {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.625rem;
+  background-color: #F8F8F8;
 }
 
-.footer__social_media__link--twitter {
+.footer__data__social_media__link--twitter {
   background-color: #BEAD8E;
 }
 
@@ -271,6 +365,37 @@ header {
   padding: 0.75rem 1.25rem;
 }
 
+@media screen and (min-width: 1000px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 65%;
+    height: 34.5rem;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .footer__data, .footer__services, .footer__contact {
+    padding-block: 6.25rem;
+  }
+  .footer__data {
+    width: 25%;
+  }
+  .footer__services {
+    width: 33%;
+  }
+  .footer__contact {
+    width: 20%;
+  }
+  .footer__legal {
+    display: flex;
+    justify-content: space-around;
+    height: 5rem;
+    padding: 0;
+  }
+  .footer__legal__text {
+    padding: 2rem 1.25rem;
+  }
+}
 html, * {
   box-sizing: border-box;
   margin: 0;
@@ -283,6 +408,10 @@ body {
 
 button, input[type=submit] {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 .main__header {
@@ -310,7 +439,7 @@ button, input[type=submit] {
   letter-spacing: 2.8px;
   text-transform: uppercase;
 }
-.main__header__text--details {
+.main__header__text--details, .main__header__text--details > pre {
   font-family: "Old Standard TT";
   font-weight: 400;
   font-size: 3.5rem;
@@ -368,15 +497,71 @@ button, input[type=submit] {
   color: #BEAD8E;
 }
 
-.swiper_complete .swiper-pagination, .swiper_only_pagination .swiper-pagination {
+@media screen and (min-width: 1000px) {
+  .main__header {
+    height: 22rem;
+  }
+  .main__header__bg_color {
+    height: 22rem;
+  }
+  .main__header__text {
+    position: relative;
+    left: 20%;
+    top: 6.5rem;
+    width: 50%;
+  }
+  .main__header__text--details {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -2.16px;
+  }
+  .main__header--index {
+    height: 43.75rem;
+  }
+  .main__header--index__bg_color {
+    height: 43.75rem;
+  }
+  .main__header--index__text {
+    padding-bottom: 2rem;
+  }
+  .main__header--index__text--luxury {
+    font-size: 0.875rem;
+  }
+  .main__header--index__text--details, .main__header--index__text--details > pre {
+    font-size: 7.5rem;
+    line-height: 8.125rem;
+    letter-spacing: -3.6px;
+  }
+  .main__header--index__buttons {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 6.5rem;
+    left: 20%;
+    width: 50%;
+  }
+  .main__header--index__buttons button {
+    margin: 0 1.875rem 0 0;
+    width: 13.5rem;
+  }
+  .breadcrumbs {
+    right: 20%;
+    padding: 1.25rem 2.5rem;
+  }
+}
+.swiper_complete .swiper-pagination, .swiper-only-pagination .swiper-pagination {
   bottom: 0;
+}
+
+.swiper-only-pagination {
+  text-align: center;
 }
 
 .page-number,
 .swiper_complete .custom-button-prev--rooms,
 .swiper_complete .custom-button-next--rooms,
-.swiper_only_pagination .custom-button-prev--rooms,
-.swiper_only_pagination .custom-button-next--rooms {
+.swiper-only-pagination .custom-button-prev--rooms,
+.swiper-only-pagination .custom-button-next--rooms {
   background-color: transparent;
   border: none;
   display: inline-flex;
@@ -406,8 +591,8 @@ button, input[type=submit] {
 
 .swiper_complete .custom-button-prev--rooms,
 .swiper_complete .custom-button-next--rooms,
-.swiper_only_pagination .custom-button-prev--rooms,
-.swiper_only_pagination .custom-button-next--rooms {
+.swiper-only-pagination .custom-button-prev--rooms,
+.swiper-only-pagination .custom-button-next--rooms {
   font-family: "Archivo";
   font-weight: 400;
   font-size: 1.25rem;
@@ -417,11 +602,11 @@ button, input[type=submit] {
   display: none;
 }
 
-.swiper_complete .custom-button-prev--rooms, .swiper_only_pagination .custom-button-prev--rooms {
+.swiper_complete .custom-button-prev--rooms, .swiper-only-pagination .custom-button-prev--rooms {
   margin-right: 0.625rem;
 }
 
-.custom-button-prev--only_navigation, .custom-button-next--only_navigation {
+.swiper .custom-button-prev--only_navigation, .swiper .custom-button-next--only_navigation {
   top: 6.25rem;
   position: absolute;
   display: inline-flex;
@@ -432,6 +617,7 @@ button, input[type=submit] {
   width: 2rem;
   height: 2rem;
   line-height: 1.25rem;
+  cursor: pointer;
   z-index: 3;
 }
 
@@ -501,8 +687,109 @@ button, input[type=submit] {
 .room__card__bottom__pricing__price {
   color: #BEAD8E;
 }
+.room__card__bottom__pricing hr {
+  display: none;
+  position: relative;
+  align-self: flex-end;
+  width: 20%;
+  right: 0;
+  margin-block: 1rem 0.5rem;
+  border: 1px solid #F1F1F1;
+}
 .room__card__bottom__pricing__book {
   color: #BDBDBD;
+}
+
+@media screen and (min-width: 1000px) {
+  .room__card {
+    margin: 0 auto;
+    padding-right: 1rem;
+  }
+  .room__card--list {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.875rem;
+  }
+  .room__card--list img {
+    width: 50%;
+    height: 100%;
+    max-height: 19rem;
+  }
+  .room__card--list__bottom {
+    position: relative;
+    padding: 1.5rem 0 1.5rem 2.5rem;
+    text-align: left;
+    background-color: white;
+  }
+  .room__card--list__bottom__icons {
+    display: flex;
+    flex-direction: row;
+    left: 0;
+    bottom: 0;
+    width: fit-content;
+    height: 3rem;
+    margin: 0 0.5rem 2.5rem 0;
+    padding: 0.75rem 1.5rem;
+  }
+  .room__card--list__bottom__icons > img {
+    width: 1.875rem;
+  }
+  .room__card--list__bottom__icons > :not(:last-child) {
+    padding-right: 0;
+  }
+  .room__card--list__bottom__type {
+    width: 55%;
+  }
+  .room__card--list__bottom__description {
+    width: 60%;
+    margin-top: 1rem;
+    padding: 0;
+  }
+  .room__card--list__bottom__pricing {
+    flex-direction: column;
+    position: absolute;
+    margin: 0;
+    width: auto;
+    top: 35%;
+    right: 0;
+    text-align: right;
+  }
+  .room__card--list__bottom__pricing__price span {
+    font-size: 2.5rem;
+  }
+  .room__card--list__bottom__pricing hr {
+    display: block;
+  }
+}
+.rooms__view {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .rooms {
+    top: -5rem;
+    width: 60%;
+    margin: 0 auto 7rem auto;
+  }
+  .rooms__view {
+    display: block;
+    position: sticky;
+    top: 7rem;
+    width: 15%;
+    height: 5rem;
+    margin: 7rem 0 0 2.5%;
+    padding: 1rem 0;
+    font-family: "Archivo";
+    font-weight: 400;
+    font-size: 0.875rem;
+    background-color: #BEAD8E;
+    color: #F8F8F8;
+    border: 0;
+  }
+  .rooms--wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /*# sourceMappingURL=rooms.css.map */

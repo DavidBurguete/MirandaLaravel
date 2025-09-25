@@ -1,4 +1,9 @@
 window.addEventListener("load", () => {
+    let screen_width = window.screen.width;
+    let slide_amount = 1;
+    if(screen_width>1450){
+        slide_amount = 2;
+    }
     const swiper = new Swiper('.swiper_only_pagination', {
         direction: 'horizontal',
         loop: true,
@@ -53,31 +58,11 @@ window.addEventListener("load", () => {
             }
         },
 
+        slidesPerView: slide_amount,
+
         navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
-        }
-    });
-
-    document.querySelector('.swiper-pagination').addEventListener('click', event => {
-        if (event.target.classList.contains('page-number')) {
-            const type = event.target.getAttribute('data-slide');
-            if(!Number.isNaN(parseInt(type))){
-                const slideIndex = parseInt(type) - 1;
-                swiper.slideTo(slideIndex);
-            }
-            else{
-                var max = swiper.pagination.el.children;
-                max = parseInt(max[max.length-2].getAttribute("data-slide"));
-                if(type === "«"){
-                    const action = swiper.realIndex - 1 < 0 ? max : swiper.realIndex - 1;
-                    swiper.slideTo(action);
-                }
-                else if(type === "»"){
-                    const action = swiper.realIndex + 1 >= max ? 0 : swiper.realIndex + 1;
-                    swiper.slideTo(action);
-                }
-            }
         }
     });
 

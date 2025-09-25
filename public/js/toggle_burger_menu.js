@@ -1,6 +1,6 @@
 window.addEventListener("load", () => {
     let menu = document.querySelector(".burger_menu");
-    let nav = document.querySelector("nav");
+    let nav = document.getElementById("deployNav");
     let first = document.querySelector(".burger_menu--first");
     let middle = document.querySelector(".burger_menu--middle");
     let last = document.querySelector(".burger_menu--last");

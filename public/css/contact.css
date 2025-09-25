@@ -42,7 +42,7 @@
   }
 }
 nav {
-  position: fixed;
+  position: absolute;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -60,6 +60,9 @@ nav.deploy_nav--active {
 }
 nav.deploy_nav--non_active {
   transform: scaleY(0);
+}
+nav.header--nav {
+  display: none;
 }
 nav a {
   color: #111111;
@@ -81,13 +84,44 @@ nav a {
     padding: 0;
   }
   nav.deploy_nav--active, nav.deploy_nav--non_active {
-    transform: scale(1);
+    display: none;
+  }
+  nav.header--nav {
+    display: flex;
+    position: relative;
+    width: 40%;
+    left: 0;
+    padding: 0;
+    background-color: white;
+    box-shadow: none;
+    z-index: 12;
+  }
+  nav.header--nav a {
+    display: inline-block;
+    margin: 0 auto;
+    height: 100%;
+    width: 25%;
+    align-content: center;
   }
   nav a {
     text-align: center;
   }
 }
-header {
+@media screen and (min-width: 1051px) {
+  nav.header--nav {
+    left: 3rem;
+  }
+}
+.desktop_header {
+  display: none;
+  font-family: "Roboto";
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 100%;
+  color: white;
+}
+
+.header--wrapper {
   display: flex;
   flex-direction: row;
   position: sticky;
@@ -103,6 +137,7 @@ header {
   font-family: "Archivo";
   font-weight: 700;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: 2.6px;
   color: #111111;
 }
@@ -110,7 +145,7 @@ header {
   align-self: center;
   order: 2;
   font-size: 0.8rem;
-  width: 4rem;
+  width: 8.5rem;
   margin-left: 1rem;
 }
 .logo h1 span {
@@ -134,6 +169,13 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--user {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
 
 .header_buttons--search {
   background-color: transparent;
@@ -142,17 +184,68 @@ header {
   margin-right: 1.4rem;
   line-height: 0;
 }
+@media screen and (min-width: 1000px) {
+  .header_buttons--search {
+    margin: 0.4375rem 0 0.4375rem 1.25rem;
+    padding: 1.25rem;
+    border: 1px solid rgba(133, 133, 133, 0.3019607843);
+  }
+}
+
+@media screen and (min-width: 1000px) {
+  header {
+    position: relative;
+    background-color: #222222;
+    height: 6.25rem;
+  }
+  .desktop_header {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    padding: 0.6875rem 0;
+    width: 74%;
+  }
+  .header--wrapper {
+    position: relative;
+    margin: 0 auto;
+    padding: 1.25rem;
+    width: 74%;
+    height: 7.5rem;
+    box-shadow: none;
+  }
+  .logo h1 {
+    font-size: 1.6rem;
+  }
+  .logo img {
+    order: 1;
+    width: 5rem;
+    height: 5rem;
+    box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.2509803922);
+  }
+  .header_buttons {
+    position: relative;
+    right: 0;
+  }
+}
+@media screen and (min-width: 1246px) {
+  .header_buttons {
+    position: relative;
+    right: 10%;
+  }
+}
+footer {
+  background-image: url("../img/footer background.png");
+  background-color: rgba(255, 255, 255, 0.98);
+  background-blend-mode: lighten;
+}
 
 .footer {
   display: flex;
   flex-direction: column;
-  background-image: url("../img/footer background.png");
-  background-color: rgba(255, 255, 255, 0.98);
-  background-blend-mode: lighten;
   padding: 1.25rem;
 }
 
-.footer__logo {
+.footer__data__logo {
   display: flex;
   margin-bottom: 3.125rem;
   font-family: "Archivo";
@@ -161,22 +254,22 @@ header {
   letter-spacing: 2.6px;
   color: #111111;
 }
-.footer__logo h1 {
+.footer__data__logo h1 {
   align-self: center;
   order: 2;
   font-size: 1.625rem;
   width: 4rem;
   margin-left: 1.75rem;
 }
-.footer__logo h1 span {
+.footer__data__logo h1 span {
   font-weight: 400;
 }
-.footer__logo img {
+.footer__data__logo img {
   order: 1;
   box-shadow: 0px 14px 24px 0px rgba(139, 139, 139, 0.1490196078);
 }
 
-.footer__description {
+.footer__data__description {
   color: #777777;
   font-family: "Archivo";
   font-weight: 400;
@@ -185,12 +278,12 @@ header {
   margin-bottom: 2rem;
 }
 
-.footer__social_media {
+.footer__data__social_media {
   display: flex;
   margin-bottom: 2rem;
 }
 
-.footer__social_media__link {
+.footer__data__social_media__link {
   display: flex;
   flex-wrap: wrap;
   align-content: center;
@@ -198,9 +291,10 @@ header {
   width: 2.5rem;
   height: 2.5rem;
   margin-right: 0.625rem;
+  background-color: #F8F8F8;
 }
 
-.footer__social_media__link--twitter {
+.footer__data__social_media__link--twitter {
   background-color: #BEAD8E;
 }
 
@@ -271,6 +365,37 @@ header {
   padding: 0.75rem 1.25rem;
 }
 
+@media screen and (min-width: 1000px) {
+  .footer {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 65%;
+    height: 34.5rem;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .footer__data, .footer__services, .footer__contact {
+    padding-block: 6.25rem;
+  }
+  .footer__data {
+    width: 25%;
+  }
+  .footer__services {
+    width: 33%;
+  }
+  .footer__contact {
+    width: 20%;
+  }
+  .footer__legal {
+    display: flex;
+    justify-content: space-around;
+    height: 5rem;
+    padding: 0;
+  }
+  .footer__legal__text {
+    padding: 2rem 1.25rem;
+  }
+}
 html, * {
   box-sizing: border-box;
   margin: 0;
@@ -310,7 +435,7 @@ button, input[type=submit] {
   letter-spacing: 2.8px;
   text-transform: uppercase;
 }
-.main__header__text--details {
+.main__header__text--details, .main__header__text--details > pre {
   font-family: "Old Standard TT";
   font-weight: 400;
   font-size: 3.5rem;
@@ -368,6 +493,57 @@ button, input[type=submit] {
   color: #BEAD8E;
 }
 
+@media screen and (min-width: 1000px) {
+  .main__header {
+    height: 22rem;
+  }
+  .main__header__bg_color {
+    height: 22rem;
+  }
+  .main__header__text {
+    position: relative;
+    left: 20%;
+    top: 6.5rem;
+    width: 50%;
+  }
+  .main__header__text--details {
+    font-size: 4.5rem;
+    line-height: 4.5rem;
+    letter-spacing: -2.16px;
+  }
+  .main__header--index {
+    height: 43.75rem;
+  }
+  .main__header--index__bg_color {
+    height: 43.75rem;
+  }
+  .main__header--index__text {
+    padding-bottom: 2rem;
+  }
+  .main__header--index__text--luxury {
+    font-size: 0.875rem;
+  }
+  .main__header--index__text--details, .main__header--index__text--details > pre {
+    font-size: 7.5rem;
+    line-height: 8.125rem;
+    letter-spacing: -3.6px;
+  }
+  .main__header--index__buttons {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    top: 6.5rem;
+    left: 20%;
+  }
+  .main__header--index__buttons button {
+    margin: 0 1.875rem 0 0;
+    width: 13.5rem;
+  }
+  .breadcrumbs {
+    right: 20%;
+    padding: 1.25rem 2.5rem;
+  }
+}
 .contact {
   padding: 1.5rem 2rem;
 }
@@ -375,6 +551,7 @@ button, input[type=submit] {
   position: relative;
   display: flex;
   padding-block: 3.25rem;
+  width: auto;
 }
 .contact__card img {
   align-self: flex-start;
@@ -391,8 +568,9 @@ button, input[type=submit] {
 }
 .contact__card__text > :nth-child(n) {
   margin-bottom: 0.5rem;
+  font-family: "Roboto";
 }
-.contact__card_text > :first-child {
+.contact__card__text > :first-child {
   margin-bottom: 1.25rem;
   font-family: "Old Standard TT";
   font-size: 1.25rem;
@@ -455,7 +633,7 @@ form #subject {
 form #message {
   width: 100%;
   background-repeat: no-repeat;
-  background-position-y: 1.625;
+  background-position-y: 1.625rem;
   background-position-x: 1.25rem;
   background-image: url("../img/message.svg");
   resize: none;
@@ -473,6 +651,55 @@ form input[type=submit] {
   text-transform: uppercase;
   color: white;
   margin: 3.75 auto;
+}
+
+@media screen and (min-width: 1000px) {
+  .contact {
+    display: flex;
+    justify-content: space-between;
+    max-width: 60%;
+    margin: 0 auto;
+    height: 15rem;
+  }
+  .contact__card {
+    width: 30%;
+  }
+  .contact__card__text {
+    position: relative;
+    left: 1.6875rem;
+    width: 20%;
+  }
+  .contact__card__number {
+    position: relative;
+    bottom: 1rem;
+    margin: 0;
+    text-align: right;
+    z-index: -1;
+  }
+  iframe {
+    position: relative;
+    width: 60%;
+    height: 43.75rem;
+    left: 20%;
+  }
+  form {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 60%;
+    margin: 0 auto;
+  }
+  form label:not([for=message]) {
+    width: 48%;
+  }
+  form label[for=message] {
+    width: 100%;
+  }
+  form input[type=submit] {
+    max-width: 15%;
+    margin: 0 auto 7.5rem auto;
+  }
 }
 
 /*# sourceMappingURL=contact.css.map */
