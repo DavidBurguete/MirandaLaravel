@@ -26,8 +26,14 @@
     <button class="rooms__view" id="change-view"><pre>Change view:</pre> <pre>Grid-List</pre></button>
     <div class="swiper swiper_only_pagination rooms">
         <div class="swiper-wrapper rooms--wrapper">
+            @php
+                $counted = 0;
+                $amount_per_slide = 6;
+            @endphp
             @foreach($rooms as $room)
+                @if($counted == 0)
                 <div class="swiper-slide rooms--slide">
+                @endif
                     <div class="room__card">
                         <img src="{{ asset($room->photos) }}" alt="Room image">
                         <div class="room__card__bottom">
@@ -44,13 +50,21 @@
                             <p class="room__card__bottom__description">{{ $room->description }}</p>
                             <div class="room__card__bottom__pricing">
                                 <p class="room__card__bottom__pricing__price"><span>${{ number_format($room->price, 2) }}</span>/Night</p>
+                                <hr>
                                 <a href="/rooms/{{ $room->id }}">
                                     <p class="room__card__bottom__pricing__book">Booking Now</p>
                                 </a>
                             </div>
                         </div>
                     </div>
+                @if($counted >= $amount_per_slide - 1)
                 </div>
+                @endif
+                @php
+                    $counted += 1;
+                    if($counted >=$amount_per_slide)
+                        $counted = 0;
+                @endphp
             @endforeach
         </div>
         <div class="swiper-only-pagination"></div>

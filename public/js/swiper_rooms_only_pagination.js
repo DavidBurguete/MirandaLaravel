@@ -77,7 +77,6 @@ window.addEventListener("load", () => {
     document.querySelector('.swiper-only-pagination').addEventListener('click', event => {
         if (event.target.classList.contains('page-number')) {
             const type = event.target.getAttribute('data-slide');
-            console.log("A");
             if(!Number.isNaN(parseInt(type))){
                 const slideIndex = parseInt(type) - 1;
                 swiper.slideTo(slideIndex);
