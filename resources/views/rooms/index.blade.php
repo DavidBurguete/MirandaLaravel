@@ -28,28 +28,28 @@
         <div class="swiper-wrapper rooms--wrapper">
             @foreach($rooms as $room)
                 <div class="swiper-slide rooms--slide">
-                    <a href="/rooms/{{ $room->id }}">
-                        <div class="room__card">
-                            <img src="{{ asset($room->photos) }}" alt="Room image">
-                            <div class="room__card__bottom">
-                                <div class="room__card__bottom__icons">
-                                    <img src="{{ asset('img/bed.svg') }}" alt="bed icon">
-                                    <img src="{{ asset('img/wifi.svg') }}" alt="wifi icon">
-                                    <img src="{{ asset('img/car.svg') }}" alt="car icon">
-                                    <img src="{{ asset('img/snowflake.svg') }}" alt="snowflake icon">
-                                    <img src="{{ asset('img/gym.svg') }}" alt="gym icon">
-                                    <img src="{{ asset('img/no-smoking.svg') }}" alt="no smoking icon">
-                                    <img src="{{ asset('img/cocktail-drink.svg') }}" alt="cocktail drink icon">
-                                </div>
-                                <p class="room__card__bottom__type">{{ $room->room_type }}</p>
-                                <p class="room__card__bottom__description">{{ $room->description }}</p>
-                                <div class="room__card__bottom__pricing">
-                                    <p class="room__card__bottom__pricing__price"><span>${{ number_format($room->price, 2) }}</span>/Night</p>
+                    <div class="room__card">
+                        <img src="{{ asset($room->photos) }}" alt="Room image">
+                        <div class="room__card__bottom">
+                            <div class="room__card__bottom__icons">
+                                <img src="{{ asset('img/bed.svg') }}" alt="bed icon">
+                                <img src="{{ asset('img/wifi.svg') }}" alt="wifi icon">
+                                <img src="{{ asset('img/car.svg') }}" alt="car icon">
+                                <img src="{{ asset('img/snowflake.svg') }}" alt="snowflake icon">
+                                <img src="{{ asset('img/gym.svg') }}" alt="gym icon">
+                                <img src="{{ asset('img/no-smoking.svg') }}" alt="no smoking icon">
+                                <img src="{{ asset('img/cocktail-drink.svg') }}" alt="cocktail drink icon">
+                            </div>
+                            <p class="room__card__bottom__type">{{ $room->room_type }}</p>
+                            <p class="room__card__bottom__description">{{ $room->description }}</p>
+                            <div class="room__card__bottom__pricing">
+                                <p class="room__card__bottom__pricing__price"><span>${{ number_format($room->price, 2) }}</span>/Night</p>
+                                <a href="/rooms/{{ $room->id }}">
                                     <p class="room__card__bottom__pricing__book">Booking Now</p>
-                                </div>
+                                </a>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 </div>
             @endforeach
         </div>
