@@ -24,8 +24,8 @@
             </h4>
         </div>
         <div class="main__header__buttons main__header--index__buttons">
-            <button class="main__header__buttons__tour">Take a Tour</button>
-            <button class="main__header__buttons__learn">Learn More</button>
+            <a href="/rooms"><button class="main__header__buttons__tour">Take a Tour</button></a>
+            <a href="#learn_more"><button class="main__header__buttons__learn">Learn More</button></a>
         </div>
     </div>
 </div>
@@ -44,12 +44,12 @@
         <input type="submit" value="Check Availability">
     </form>
 </div>
-<div class="about">
+<div class="about" id="learn_more">
     <div class="about__text">
         <h2 class="about__text__name">About Us</h2>
         <h3 class="about__text__title">Discover Our Underground.</h3>
         <p class="about__text__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button class="about__text__book">Book Now</button>
+        <a href="/rooms"><button class="about__text__book">Book Now</button></a>
     </div>
     <div class="about__team">
         <img src="/img/main-entrance.jpeg" alt="the hotel main entrance" class="about__team__img">
@@ -73,132 +73,29 @@
     <h4 class="popular_rooms--room">Hand Picked Rooms</h4>
     <div class="swiper swiper_complete popular">
         <div class="swiper-wrapper popular__wrapper">
-            <div class="swiper-slide popular__wrapper__slide">
-                <div class="room__card">
-                    <div class="room__card__icons">
-                        <img src="/img/bed.svg" alt="bed icon">
-                        <img src="/img/wifi.svg" alt="wifi icon">
-                        <img src="/img/car.svg" alt="car icon">
-                        <img src="/img/snowflake.svg" alt="snowflake icon">
-                        <img src="/img/gym.svg" alt="gym icon">
-                        <img src="/img/no-smoking.svg" alt="no smoking icon">
-                        <img src="/img/cocktail-drink.svg" alt="cocktail drink icon">
-                    </div>
-                    <img src="/img/hotel-room-1.jpg"/>
-                    <div class="room__card__bottom">
-                        <p class="room__card__bottom__type">Minimal Duplex Room</p>
-                        <p class="room__card__bottom__description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor.</p>
-                        <div class="room__card__bottom__pricing">
-                            <p class="room__card__bottom__pricing__price"><span>$345</span>/Night</p>
+            @foreach($rooms as $room)
+                <div class="swiper-slide popular__wrapper__slide">
+                    <div class="room__card">
+                        <div class="room__card__icons">
+                            <img src="/img/bed.svg" alt="bed icon">
+                            <img src="/img/wifi.svg" alt="wifi icon">
+                            <img src="/img/car.svg" alt="car icon">
+                            <img src="/img/snowflake.svg" alt="snowflake icon">
+                            <img src="/img/gym.svg" alt="gym icon">
+                            <img src="/img/no-smoking.svg" alt="no smoking icon">
+                            <img src="/img/cocktail-drink.svg" alt="cocktail drink icon">
+                        </div>
+                        <img src="{{ asset($room->photos) }}"/>
+                        <div class="room__card__bottom">
+                            <p class="room__card__bottom__type">{{ $room->room_type }}</p>
+                            <p class="room__card__bottom__description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor.</p>
+                            <div class="room__card__bottom__pricing">
+                                <p class="room__card__bottom__pricing__price"><span>${{ $room->price }}</span>/Night</p>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="swiper-slide popular__wrapper__slide">
-                <div class="room__card">
-                    <div class="room__card__icons">
-                        <img src="/img/bed.svg" alt="bed icon">
-                        <img src="/img/wifi.svg" alt="wifi icon">
-                        <img src="/img/car.svg" alt="car icon">
-                        <img src="/img/snowflake.svg" alt="snowflake icon">
-                        <img src="/img/gym.svg" alt="gym icon">
-                        <img src="/img/no-smoking.svg" alt="no smoking icon">
-                        <img src="/img/cocktail-drink.svg" alt="cocktail drink icon">
-                    </div>
-                    <img src="/img/hotel-room-2.jpg"/>
-                    <div class="room__card__bottom">
-                        <p class="room__card__bottom__type">Minimal Duplex Room</p>
-                        <p class="room__card__bottom__description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor.</p>
-                        <div class="room__card__bottom__pricing">
-                            <p class="room__card__bottom__pricing__price"><span>$345</span>/Night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide popular__wrapper__slide">
-                <div class="room__card">
-                    <div class="room__card__icons">
-                        <img src="/img/bed.svg" alt="bed icon">
-                        <img src="/img/wifi.svg" alt="wifi icon">
-                        <img src="/img/car.svg" alt="car icon">
-                        <img src="/img/snowflake.svg" alt="snowflake icon">
-                        <img src="/img/gym.svg" alt="gym icon">
-                        <img src="/img/no-smoking.svg" alt="no smoking icon">
-                        <img src="/img/cocktail-drink.svg" alt="cocktail drink icon">
-                    </div>
-                    <img src="/img/hotel-room-4.jpg"/>
-                    <div class="room__card__bottom">
-                        <p class="room__card__bottom__type">Minimal Duplex Room</p>
-                        <p class="room__card__bottom__description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor.</p>
-                        <div class="room__card__bottom__pricing">
-                            <p class="room__card__bottom__pricing__price"><span>$345</span>/Night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide popular__wrapper__slide">
-                <div class="room__card">
-                    <div class="room__card__icons">
-                        <img src="/img/bed.svg" alt="bed icon">
-                        <img src="/img/wifi.svg" alt="wifi icon">
-                        <img src="/img/car.svg" alt="car icon">
-                        <img src="/img/snowflake.svg" alt="snowflake icon">
-                        <img src="/img/gym.svg" alt="gym icon">
-                        <img src="/img/no-smoking.svg" alt="no smoking icon">
-                        <img src="/img/cocktail-drink.svg" alt="cocktail drink icon">
-                    </div>
-                    <img src="/img/hotel-room-3.jpg"/>
-                    <div class="room__card__bottom">
-                        <p class="room__card__bottom__type">Minimal Duplex Room</p>
-                        <p class="room__card__bottom__description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor.</p>
-                        <div class="room__card__bottom__pricing">
-                            <p class="room__card__bottom__pricing__price"><span>$345</span>/Night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide popular__wrapper__slide">
-                <div class="room__card">
-                    <div class="room__card__icons">
-                        <img src="/img/bed.svg" alt="bed icon">
-                        <img src="/img/wifi.svg" alt="wifi icon">
-                        <img src="/img/car.svg" alt="car icon">
-                        <img src="/img/snowflake.svg" alt="snowflake icon">
-                        <img src="/img/gym.svg" alt="gym icon">
-                        <img src="/img/no-smoking.svg" alt="no smoking icon">
-                        <img src="/img/cocktail-drink.svg" alt="cocktail drink icon">
-                    </div>
-                    <img src="/img/hotel-room-2.jpg"/>
-                    <div class="room__card__bottom">
-                        <p class="room__card__bottom__type">Minimal Duplex Room</p>
-                        <p class="room__card__bottom__description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor.</p>
-                        <div class="room__card__bottom__pricing">
-                            <p class="room__card__bottom__pricing__price"><span>$345</span>/Night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="swiper-slide popular__wrapper__slide">
-                <div class="room__card">
-                    <div class="room__card__icons">
-                        <img src="/img/bed.svg" alt="bed icon">
-                        <img src="/img/wifi.svg" alt="wifi icon">
-                        <img src="/img/car.svg" alt="car icon">
-                        <img src="/img/snowflake.svg" alt="snowflake icon">
-                        <img src="/img/gym.svg" alt="gym icon">
-                        <img src="/img/no-smoking.svg" alt="no smoking icon">
-                        <img src="/img/cocktail-drink.svg" alt="cocktail drink icon">
-                    </div>
-                    <img src="/img/hotel-room-4.jpg"/>
-                    <div class="room__card__bottom">
-                        <p class="room__card__bottom__type">Minimal Duplex Room</p>
-                        <p class="room__card__bottom__description">Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod tempor.</p>
-                        <div class="room__card__bottom__pricing">
-                            <p class="room__card__bottom__pricing__price"><span>$345</span>/Night</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
         <div class="custom-button-prev--only_navigation">&lt;</div>
         <div class="custom-button-next--only_navigation">&gt;</div>
@@ -218,7 +115,7 @@
         class="video"
     >
     </iframe>
-    <button class="place__book">Book Now</button>
+    <a href="/rooms"><button class="place__book">Book Now</button></a>
     <div class="place__second_panel"></div>
 </div>
 <div class="features">

@@ -397,7 +397,6 @@ footer {
   }
 }
 html, * {
-  scroll-behavior: smooth;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -550,162 +549,31 @@ a {
     padding: 1.25rem 2.5rem;
   }
 }
-.contact {
-  padding: 1.5rem 2rem;
-}
-.contact__card {
-  position: relative;
-  display: flex;
-  padding-block: 3.25rem;
-  width: auto;
-}
-.contact__card img {
-  align-self: flex-start;
-}
-.contact__card__text {
-  position: absolute;
-  left: 4.1875rem;
+.error {
   width: 60%;
-  font-family: "Roboto";
-  font-weight: 400;
-  font-size: 0.875rem;
-  line-height: 100%;
-  color: #777777;
+  margin: 3.5rem auto;
 }
-.contact__card__text > :nth-child(n) {
-  margin-bottom: 0.5rem;
-  font-family: "Roboto";
-}
-.contact__card__text > :first-child {
+.error__header {
+  width: 80%;
   margin-bottom: 1.25rem;
-  font-family: "Old Standard TT";
-  font-size: 1.25rem;
-  line-height: 1.5rem;
-  color: #222222;
-}
-.contact__card__number {
-  margin-left: auto;
-  font-family: "Roboto";
+  font-family: "Archivo";
   font-weight: 700;
-  font-size: 12.5rem;
-  line-height: 100%;
-  letter-spacing: -6px;
-  color: #F8F8F8;
-}
-
-iframe {
-  padding: 1.25rem;
-  max-width: 100%;
-}
-
-form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  margin-inline: 1.25rem;
-}
-form input[type=text], form textarea {
-  margin-block: 0.5rem;
-  padding: 1.5625rem 1.25rem 1.5625rem 3.25rem;
-  width: 100%;
-  border: 0;
-  outline: none;
-  background-color: #F8F8F8;
-}
-form #name {
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: 1.25rem;
-  background-image: url("../img/user_form.svg");
-}
-form #phone {
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: 1.25rem;
-  background-image: url("../img/telephone.svg");
-}
-form #email {
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: 1.25rem;
-  background-image: url("../img/email.svg");
-}
-form #subject {
-  background-repeat: no-repeat;
-  background-position-y: center;
-  background-position-x: 1.25rem;
-  background-image: url("../img/subject.svg");
-}
-form #message {
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position-y: 1.625rem;
-  background-position-x: 1.25rem;
-  background-image: url("../img/message.svg");
-  resize: none;
-}
-form input[type=submit] {
-  width: 70%;
-  padding: 1.25rem;
-  border: none;
-  background-color: #BEAD8E;
-  font-family: "Roboto";
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 100%;
-  letter-spacing: 3.2px;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  letter-spacing: 2.8px;
   text-transform: uppercase;
-  color: white;
-  margin: 3.75 auto;
+}
+.error__main {
+  font-family: "Old Standard TT";
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 2rem;
+  letter-spacing: -1.2px;
 }
 
 @media screen and (min-width: 1000px) {
-  .contact {
-    display: flex;
-    justify-content: space-between;
-    max-width: 60%;
-    margin: 7.5rem auto 1rem auto;
-    height: 15rem;
-  }
-  .contact__card {
-    width: 30%;
-  }
-  .contact__card__text {
-    position: relative;
-    left: 1.6875rem;
-    width: 20%;
-  }
-  .contact__card__number {
-    position: relative;
-    bottom: 1rem;
-    margin: 0;
-    text-align: right;
-    z-index: -1;
-  }
-  iframe {
-    position: relative;
-    width: 60%;
-    height: 43.75rem;
-    left: 20%;
-  }
-  form {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    width: 60%;
-    margin: 7.5rem auto;
-  }
-  form label:not([for=message]) {
-    width: 48%;
-  }
-  form label[for=message] {
-    width: 100%;
-  }
-  form input[type=submit] {
-    max-width: 15%;
-    margin: 0 auto;
+  .error__main{
+    font-size: 3.5rem;
+    line-height: 3.75rem;
   }
 }
-
-/*# sourceMappingURL=contact.css.map */

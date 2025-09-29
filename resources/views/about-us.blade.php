@@ -57,10 +57,10 @@
         <h2 class="restaurant__text__title">Restaurant</h2>
         <h3 class="restaurant__text__info">Get Restaurant Facilities & Many Other More</h3>
         <p class="restaurant__text__description">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tem por incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-        <button class="restaurant__text__look">Take a Tour</button>
+        <a href="#take_a_tour"><button class="restaurant__text__look">Take a Tour</button></a>
     </div>
 </div>
-<div class="features">
+<div class="features" id="take_a_tour">
     <h2 class="features__title">Facilities</h2>
     <h3 class="features__description">Core Features</h3>
     <div class="swiper swiper_complete">

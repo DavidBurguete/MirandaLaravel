@@ -397,6 +397,7 @@ footer {
   }
 }
 html, * {
+  scroll-behavior: smooth;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -408,6 +409,10 @@ body {
 
 button, input[type=submit] {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 .main__header {
@@ -1008,6 +1013,7 @@ footer {
   }
 }
 html, * {
+  scroll-behavior: smooth;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -1019,6 +1025,10 @@ body {
 
 button, input[type=submit] {
   cursor: pointer;
+}
+
+a {
+  text-decoration: none;
 }
 
 .main__header {
@@ -1156,15 +1166,19 @@ button, input[type=submit] {
     padding: 1.25rem 2.5rem;
   }
 }
-.swiper_complete .swiper-pagination, .swiper_only_pagination .swiper-pagination {
+.swiper_complete .swiper-pagination, .swiper-only-pagination .swiper-pagination {
   bottom: 0;
+}
+
+.swiper-only-pagination {
+  text-align: center;
 }
 
 .page-number,
 .swiper_complete .custom-button-prev--rooms,
 .swiper_complete .custom-button-next--rooms,
-.swiper_only_pagination .custom-button-prev--rooms,
-.swiper_only_pagination .custom-button-next--rooms {
+.swiper-only-pagination .custom-button-prev--rooms,
+.swiper-only-pagination .custom-button-next--rooms {
   background-color: transparent;
   border: none;
   display: inline-flex;
@@ -1194,8 +1208,8 @@ button, input[type=submit] {
 
 .swiper_complete .custom-button-prev--rooms,
 .swiper_complete .custom-button-next--rooms,
-.swiper_only_pagination .custom-button-prev--rooms,
-.swiper_only_pagination .custom-button-next--rooms {
+.swiper-only-pagination .custom-button-prev--rooms,
+.swiper-only-pagination .custom-button-next--rooms {
   font-family: "Archivo";
   font-weight: 400;
   font-size: 1.25rem;
@@ -1205,7 +1219,7 @@ button, input[type=submit] {
   display: none;
 }
 
-.swiper_complete .custom-button-prev--rooms, .swiper_only_pagination .custom-button-prev--rooms {
+.swiper_complete .custom-button-prev--rooms, .swiper-only-pagination .custom-button-prev--rooms {
   margin-right: 0.625rem;
 }
 
@@ -1290,10 +1304,110 @@ button, input[type=submit] {
 .room__card__bottom__pricing__price {
   color: #BEAD8E;
 }
+.room__card__bottom__pricing hr {
+  display: none;
+  position: relative;
+  align-self: flex-end;
+  width: 20%;
+  right: 0;
+  margin-block: 1rem 0.5rem;
+  border: 1px solid #F1F1F1;
+}
 .room__card__bottom__pricing__book {
   color: #BDBDBD;
 }
 
+@media screen and (min-width: 1000px) {
+  .room__card {
+    margin: 0 auto;
+    padding-right: 1rem;
+  }
+  .room__card--list {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1.875rem;
+  }
+  .room__card--list img {
+    width: 50%;
+    height: 100%;
+    max-height: 19rem;
+  }
+  .room__card--list__bottom {
+    position: relative;
+    padding: 1.5rem 0 1.5rem 2.5rem;
+    text-align: left;
+    background-color: white;
+  }
+  .room__card--list__bottom__icons {
+    display: flex;
+    flex-direction: row;
+    left: 0;
+    bottom: 0;
+    width: fit-content;
+    height: 3rem;
+    margin: 0 0.5rem 2.5rem 0;
+    padding: 0.75rem 1.5rem;
+  }
+  .room__card--list__bottom__icons > img {
+    width: 1.875rem;
+  }
+  .room__card--list__bottom__icons > :not(:last-child) {
+    padding-right: 0;
+  }
+  .room__card--list__bottom__type {
+    width: 55%;
+  }
+  .room__card--list__bottom__description {
+    width: 60%;
+    margin-top: 1rem;
+    padding: 0;
+  }
+  .room__card--list__bottom__pricing {
+    flex-direction: column;
+    position: absolute;
+    margin: 0;
+    width: auto;
+    top: 35%;
+    right: 0;
+    text-align: right;
+  }
+  .room__card--list__bottom__pricing__price span {
+    font-size: 2.5rem;
+  }
+  .room__card--list__bottom__pricing hr {
+    display: block;
+  }
+}
+.rooms__view {
+  display: none;
+}
+
+@media screen and (min-width: 1000px) {
+  .rooms {
+    top: -5rem;
+    width: 60%;
+    margin: 0 auto 7rem auto;
+  }
+  .rooms__view {
+    display: block;
+    position: sticky;
+    top: 7rem;
+    width: 15%;
+    height: 5rem;
+    margin: 7rem 0 0 2.5%;
+    padding: 1rem 0;
+    font-family: "Archivo";
+    font-weight: 400;
+    font-size: 0.875rem;
+    background-color: #BEAD8E;
+    color: #F8F8F8;
+    border: 0;
+  }
+  .rooms--wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 .main__arrival {
   background-color: #222222;
   padding: 1.25rem;
