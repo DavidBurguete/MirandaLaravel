@@ -1394,6 +1394,9 @@ a {
 .main__availability form label .input_background_image__calendar, .main__arrival form label .input_background_image__calendar {
   background-image: url("../img/calendar.svg");
 }
+.input_background_image__email{
+  background-image: url("../img/email_form.svg");
+}
 .main__availability form input[type=submit], .main__arrival form input[type=submit] {
   width: 100%;
   padding: 1.25rem;

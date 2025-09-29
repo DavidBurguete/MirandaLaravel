@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::resource('activities', ActivityController::class);
 Route::get('/rooms', [RoomController::class, 'index']);
 Route::get('/rooms/{id}', [RoomController::class, 'show']);
+Route::post('/rooms/{id}', [RoomController::class, 'book']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);

@@ -9,10 +9,36 @@
 
 @section('css-js')
     <link rel="stylesheet" href="{{ asset('css/room_details.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="{{ asset('js/swiper_room_details_complete.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 @endsection
 
 @section('content')
+@if(isset($err))
+    <script>
+        Toastify({
+            @if(!isset($validate->email))
+                text: "Please, enter your email",
+            @else
+                text: "Something went wrong! Please, try again",
+            @endif
+            duration: 5000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true,
+            style: {
+                padding: '1.2rem',
+                fontFamily: "Roboto",
+                fontWeight: 700,
+                fontSize: "1.2rem",
+                background: "linear-gradient(to right, red, tomato)",
+            }
+        }).showToast();
+    </script>
+@endif
 <div class="main__header">
     <div class="main__header__bg_color">
         <div class="main__header__text">
@@ -32,17 +58,22 @@
         <img src="{{ asset($room->photos) }}" alt="image of a room" class="main__info__image">
     </div>
     <div class="main__availability">
-        <form>
+        <form action="/rooms/{{ $room->id }}" method="post">
+            @csrf
             <p>Check Availability</p>
             <label for="false_check_in">
                 Check In
-                <input type="date" id="real_check_in" class="input_not_visible">
+                <input type="date" id="real_check_in" name="real_check_in" class="input_not_visible">
                 <input type="text" id="false_check_in" class="input_background_image input_background_image__calendar" readonly>
             </label>
             <label for="false_check_out">
                 Check Out
-                <input type="date" id="real_check_out" class="input_not_visible">
+                <input type="date" id="real_check_out" name="real_check_out" class="input_not_visible">
                 <input type="text" id="false_check_out" class="input_background_image input_background_image__calendar" readonly>
+            </label>
+            <label for="email">
+                Your e-mail
+                <input type="email" id="email" name="email" class="input_background_image input_background_image__email" placeholder="Input your e-mail">
             </label>
             <input type="submit" value="Check Availability">
         </form>
