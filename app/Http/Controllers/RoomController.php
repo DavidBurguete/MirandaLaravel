@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Mail;
 use App\Models\Booking;
 use App\Models\Room;
-use Error;
 use Illuminate\Http\Request;
 use Throwable;
 
@@ -52,7 +53,8 @@ class RoomController extends Controller
         $booking->check_in_date = $request->real_check_in;
         $booking->check_out_date = $request->real_check_out;
         $booking->special_request = null;
-        Booking::create($booking->toArray());
+        // Booking::create($booking->toArray());
+        Mail::to($request->email)->send(new SendMail);
         $room = Room::findOrFail($id);
         $booked_room = [$booking, $room];
         return view('rooms.book', compact('booked_room'));
