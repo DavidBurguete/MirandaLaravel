@@ -52,7 +52,9 @@ class RoomController extends Controller
         $booking->check_in_date = $request->real_check_in;
         $booking->check_out_date = $request->real_check_out;
         $booking->special_request = null;
-        // Booking::create($booking->toArray());
-        return view('rooms.book', compact('booking'));
+        Booking::create($booking->toArray());
+        $room = Room::findOrFail($id);
+        $booked_room = [$booking, $room];
+        return view('rooms.book', compact('booked_room'));
     }
 }
