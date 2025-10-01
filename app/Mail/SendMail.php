@@ -21,18 +21,13 @@ class SendMail extends Mailable
         //
     }
 
-    public function build()
-    {
-        return $this->view("mailbody");
-    }
-
     /**
      * Get the message envelope.
      */
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Send Mail',
+            subject: 'Thank you for booking with us',
         );
     }
 
