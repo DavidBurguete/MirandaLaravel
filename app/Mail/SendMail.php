@@ -2,6 +2,8 @@
 
 namespace App\Mail;
 
+use App\Models\Booking;
+use App\Models\Room;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -16,7 +18,7 @@ class SendMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public Room $room, public Booking $booking)
     {
         //
     }

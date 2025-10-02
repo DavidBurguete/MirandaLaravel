@@ -17,7 +17,7 @@
           Your Booked Room
         </p>
 
-        <img src="http://ec2-35-180-116-78.eu-west-3.compute.amazonaws.com/img/hotel-room-3.jpg" alt="Room Image" width="100%" style="max-width:100%;height:auto;display:block;margin:0;padding:0;">
+        <img src="http://ec2-35-180-116-78.eu-west-3.compute.amazonaws.com{{ $room->photos }}" alt="Room Image" width="100%" style="max-width:100%;height:auto;display:block;margin:0;padding:0;">
 
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:2.5rem;font-size:1rem;color:#222222;border-collapse:collapse;margin:0;padding:0;">
           <tr>
@@ -28,28 +28,28 @@
           </tr>
           <tr>
             <td style="font-weight:700;padding:0.5rem 0;margin:0;color:#222222;">Room type:</td>
-            <td style="color:#777777;padding:0.5rem 0;margin:0;">Double Bed</td>
+            <td style="color:#777777;padding:0.5rem 0;margin:0;">{{ $room->room_type }}</td>
           </tr>
           <tr>
             <td style="font-weight:700;padding:0.5rem 0;margin:0;color:#222222;">Room floor:</td>
-            <td style="color:#777777;padding:0.5rem 0;margin:0;">Floor 1, Room 4</td>
+            <td style="color:#777777;padding:0.5rem 0;margin:0;">{{ $room->room_name }}</td>
           </tr>
           <tr>
             <td style="font-weight:700;padding:0.5rem 0;margin:0;color:#222222;">Price:</td>
-            <td style="color:#777777;padding:0.5rem 0;margin:0;">$345/night</td>
+            <td style="color:#777777;padding:0.5rem 0;margin:0;">${{ $room->price }}/night</td>
           </tr>
           <tr>
             <td style="font-weight:700;padding:0.5rem 0;margin:0;color:#222222;">Check in:</td>
-            <td style="color:#777777;padding:0.5rem 0;margin:0;">22/05/2026</td>
+            <td style="color:#777777;padding:0.5rem 0;margin:0;">{{ $booking->check_in_date }}</td>
           </tr>
           <tr>
             <td style="font-weight:700;padding:0.5rem 0;margin:0;color:#222222;">Check out:</td>
-            <td style="color:#777777;padding:0.5rem 0;margin:0;">29/05/2026</td>
+            <td style="color:#777777;padding:0.5rem 0;margin:0;">{{ $booking->check_out_date }}</td>
           </tr>
           <tr>
             <td style="font-weight:700;vertical-align:top;padding:0.5rem 0;margin:0;color:#222222;">Description:</td>
             <td style="color:#777777;padding:0.5rem 0;margin:0;">
-              Phasellus volutpat neque a tellus venenatis, a euismod augue facilisis. Fusce ut metus mattis, consequat metus nec, luctus lectus. Pellentesque orci quis hendrerit sed eu dolor. Cancel up to 14 days to get a full refund.
+              {{ $room->description }}
             </td>
           </tr>
           <tr>
@@ -76,7 +76,7 @@
           <tr>
             <td style="font-weight:700;vertical-align:top;padding:0.5rem 0;margin:0;color:#222222;">Cancellation policy:</td>
             <td style="color:#777777;padding:0.5rem 0;margin:0;">
-              Phasellus volutpat neque a tellus venenatis, a euismod augue facilisis. Fusce ut metus mattis, consequat metus nec, luctus lectus. Pellentesque orci quis hendrerit sed eu dolor. Cancel up to 14 days to get a full refund.
+              {{ $room->cancellation_policy }}
             </td>
           </tr>
         </table>

@@ -62,8 +62,8 @@ class RoomController extends Controller
         $booking->check_out_date = $request->real_check_out;
         $booking->special_request = null;
         Booking::create($booking->toArray());
-        Mail::to($request->email)->send(new SendMail);
         $room = Room::findOrFail($id);
+        Mail::to($request->email)->send(new SendMail($room, $booking));
         $booked_room = [$booking, $room];
         return view('rooms.book', compact('booked_room'));
     }
