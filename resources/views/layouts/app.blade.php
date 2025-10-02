@@ -65,7 +65,7 @@
                     <a class="footer__data__social_media__link" href="https://www.facebook.com/"><img src="/img/facebook.svg"/></a>
                     <a class="footer__data__social_media__link footer__data__social_media__link--twitter" href="https://www.twitter.com/"><img src="/img/Twitter.svg"/></a>
                     <a class="footer__data__social_media__link" href="https://www.behance.net/"><img src="/img/Behance.svg"/></a>
-                    <a class="footer__data__social_media__link" href="https://es.linkedin.com/"><img src="/img/Linkedin.svg"/></a>
+                    <a class="footer__data__social_media__link" href="https://es.linkedin.com/in/david-burguete/"><img src="/img/Linkedin.svg"/></a>
                     <a class="footer__data__social_media__link" href="https://www.youtube.com/"><img src="/img/Youtube.svg"/></a>
                 </div>
             </div>

@@ -24,8 +24,16 @@ class RoomController extends Controller
      */
     public function show(string $id)
     {
-        $room = Room::findOrFail($id);
-        return view('rooms.show', compact('room'));
+        $room_picked = Room::findOrFail($id);
+
+        $max_ammount = count(Room::all());
+        $first_room_id = rand(1, $max_ammount);
+        $second_room_id = rand(1, $max_ammount);
+        $third_room_id = rand(1, $max_ammount);
+        $rooms_suggested = Room::where('id', $first_room_id)->orWhere('id', $second_room_id)->orWhere('id', $third_room_id)->get();
+
+        $rooms = [$room_picked, $rooms_suggested];
+        return view('rooms.show', compact('rooms'));
     }
 
     /**
@@ -53,7 +61,7 @@ class RoomController extends Controller
         $booking->check_in_date = $request->real_check_in;
         $booking->check_out_date = $request->real_check_out;
         $booking->special_request = null;
-        // Booking::create($booking->toArray());
+        Booking::create($booking->toArray());
         Mail::to($request->email)->send(new SendMail);
         $room = Room::findOrFail($id);
         $booked_room = [$booking, $room];

@@ -55,21 +55,21 @@
           <tr>
             <td style="font-weight:700;vertical-align:top;padding:0.5rem 0;margin:0;color:#222222;">Amenities:</td>
             <td style="color:#777777;padding:0.5rem 0;margin:0;">
-              <ul style="padding-left:1em;margin:0;list-style-type: none;">
-                <li>Air Conditioner</li>
-                <li>High speed WiFi</li>
-                <li>Breakfast</li>
-                <li>Kitchen</li>
-                <li>Cleaning</li>
-                <li>Shower</li>
-                <li>Grocery</li>
-                <li>Single bed</li>
-                <li>Shop near</li>
-                <li>Towels</li>
-                <li>24/7 Online Support</li>
-                <li>Strong Locker</li>
-                <li>Smart Security</li>
-                <li>Expert Team</li>
+              <ul style="padding:0;margin:0;list-style-type: none;">
+                <li>-Air Conditioner</li>
+                <li>-High speed WiFi</li>
+                <li>-Breakfast</li>
+                <li>-Kitchen</li>
+                <li>-Cleaning</li>
+                <li>-Shower</li>
+                <li>-Grocery</li>
+                <li>-Single bed</li>
+                <li>-Shop near</li>
+                <li>-Towels</li>
+                <li>-24/7 Online Support</li>
+                <li>-Strong Locker</li>
+                <li>-Smart Security</li>
+                <li>-Expert Team</li>
               </ul>
             </td>
           </tr>
@@ -120,7 +120,7 @@
               </a>
             </td>
             <td style="padding-right:0.625rem;margin:0;">
-              <a href="https://es.linkedin.com/" target="_blank" style="display:inline-block;width:2.5rem;height:2.5rem;background-color:#F8F8F8;text-align:center;line-height:2.5rem;margin:0;padding:0;">
+              <a href="https://es.linkedin.com/in/david-burguete/" target="_blank" style="display:inline-block;width:2.5rem;height:2.5rem;background-color:#F8F8F8;text-align:center;line-height:2.5rem;margin:0;padding:0;">
                 <img src="http://ec2-35-180-116-78.eu-west-3.compute.amazonaws.com/img/Linkedin.png" alt="LinkedIn" style="margin:0;padding:0;">
               </a>
             </td>
