@@ -60,7 +60,10 @@ class RoomController extends Controller
             $rooms_suggested = Room::where('id', $first_room_id)->orWhere('id', $second_room_id)->orWhere('id', $third_room_id)->get();
             $rooms = [$room, $rooms_suggested];
 
-            $error = true;
+            $error = "Something went wrong!";
+            if(!isset($request->email)){
+                $error = "Please, enter your email";
+            }
             return view("rooms.show", compact("rooms", "error"));
         }
         $start_date = $request->real_check_in;

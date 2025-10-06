@@ -18,13 +18,7 @@
 @if(isset($error))
     <script>
         Toastify({
-            @if($error !== true)
-                text: "{{ $error }}",
-            @elseif(!isset($validate->email))
-                text: "Please, enter your email",
-            @else
-                text: "Something went wrong! Please, try again",
-            @endif
+            text: "{{ $error }}",
             duration: 5000,
             newWindow: true,
             close: true,
