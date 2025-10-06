@@ -13,6 +13,14 @@
 @endsection
 
 @section('content')
+@php
+    $valid_amount = 1;
+    for($i = 1; $i <= 8; $i++){
+        if($amount_rooms % $i == 0){
+            $valid_amount = $i;
+        }
+    }
+@endphp
     <div class="main__header">
         <div class="main__header__bg_color">
             <div class="main__header__text">
@@ -28,7 +36,6 @@
         <div class="swiper-wrapper rooms--wrapper">
             @php
                 $counted = 0;
-                $amount_per_slide = 6;
             @endphp
             @foreach($rooms as $room)
                 @if($counted == 0)
@@ -57,12 +64,12 @@
                             </div>
                         </div>
                     </div>
-                @if($counted >= $amount_per_slide - 1)
+                @if($counted >= $valid_amount - 1)
                 </div>
                 @endif
                 @php
                     $counted += 1;
-                    if($counted >=$amount_per_slide)
+                    if($counted >=$valid_amount)
                         $counted = 0;
                 @endphp
             @endforeach

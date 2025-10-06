@@ -15,10 +15,12 @@
 @endsection
 
 @section('content')
-@if(isset($err))
+@if(isset($error))
     <script>
         Toastify({
-            @if(!isset($validate->email))
+            @if($error !== true)
+                text: "{{ $error }}",
+            @elseif(!isset($validate->email))
                 text: "Please, enter your email",
             @else
                 text: "Something went wrong! Please, try again",

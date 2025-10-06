@@ -16,7 +16,9 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return view('rooms.index', ['rooms' => Room::all()]);
+        $rooms = Room::all();
+        $amount_rooms = Room::count();
+        return view('rooms.index', compact('rooms', 'amount_rooms'));
     }
 
     /**
@@ -50,8 +52,37 @@ class RoomController extends Controller
         }
         catch(Throwable $err){
             $room = Room::findOrFail($id);
-            $room->error = true;
-            return view("rooms.show", compact("room", "err"));
+
+            $max_ammount = count(Room::all());
+            $first_room_id = rand(1, $max_ammount);
+            $second_room_id = rand(1, $max_ammount);
+            $third_room_id = rand(1, $max_ammount);
+            $rooms_suggested = Room::where('id', $first_room_id)->orWhere('id', $second_room_id)->orWhere('id', $third_room_id)->get();
+            $rooms = [$room, $rooms_suggested];
+
+            $error = true;
+            return view("rooms.show", compact("rooms", "error"));
+        }
+        $start_date = $request->real_check_in;
+        $end_date = $request->real_check_out;
+        $check_if_booked = Booking::whereRaw("((`check_in_date` <= ? AND `check_out_date` >= ?)".
+                " OR (`check_in_date` <= ? AND `check_out_date` >= ?)) AND room_id = ?", 
+                [$start_date, $start_date, $end_date, $end_date, $id])->get();
+        $amount_booked = count($check_if_booked);
+
+        $room = Room::findOrFail($id);
+        if($amount_booked != 0){
+            $room = Room::findOrFail($id);
+
+            $max_ammount = count(Room::all());
+            $first_room_id = rand(1, $max_ammount);
+            $second_room_id = rand(1, $max_ammount);
+            $third_room_id = rand(1, $max_ammount);
+            $rooms_suggested = Room::where('id', $first_room_id)->orWhere('id', $second_room_id)->orWhere('id', $third_room_id)->get();
+            $rooms = [$room, $rooms_suggested];
+
+            $error = "We are sorry, but this room has been booked during these days";
+            return view("rooms.show", compact("rooms", "error"));
         }
         
         $booking = new Booking();
@@ -62,7 +93,6 @@ class RoomController extends Controller
         $booking->check_out_date = $request->real_check_out;
         $booking->special_request = null;
         Booking::create($booking->toArray());
-        $room = Room::findOrFail($id);
         Mail::to($request->email)->send(new SendMail($room, $booking));
         $booked_room = [$booking, $room];
         return view('rooms.book', compact('booked_room'));

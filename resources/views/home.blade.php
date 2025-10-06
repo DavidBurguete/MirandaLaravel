@@ -9,11 +9,33 @@
 
 @section('css-js')
     <link rel="stylesheet" href="{{ asset('css/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <script src="{{ asset('js/swiper_index_complete.js') }}"></script>
     <script src="{{ asset('js/swiper_index_only_pagination.js') }}"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 @endsection
 
 @section('content')
+@if(isset($err))
+    <script>
+        Toastify({
+            text: "Something went wrong! Please, try again",
+            duration: 5000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true,
+            style: {
+                padding: '1.2rem',
+                fontFamily: "Roboto",
+                fontWeight: 700,
+                fontSize: "1.2rem",
+                background: "linear-gradient(to right, red, tomato)",
+            }
+        }).showToast();
+    </script>
+@endif
 <div class="main__header main__header--index">
     <div class="main__header__bg_color main__header--index__bg_color">
         <div class="main__header__text main__header--index__text">
@@ -30,15 +52,16 @@
     </div>
 </div>
 <div class="main__arrival">
-    <form>
+    <form method="POST" action="/rooms">
+        @csrf
         <label for="false_check_in">
             Arrival Date
-            <input type="date" id="real_check_in" class="input_not_visible">
+            <input type="date" id="real_check_in" class="input_not_visible" name="real_check_in">
             <input type="text" id="false_check_in" class="input_background_image input_background_image__calendar" readonly>
         </label>
         <label for="false_check_out">
             Departure Date
-            <input type="date" id="real_check_out" class="input_not_visible">
+            <input type="date" id="real_check_out" class="input_not_visible" name="real_check_out">
             <input type="text" id="false_check_out" class="input_background_image input_background_image__calendar" readonly>
         </label>
         <input type="submit" value="Check Availability">
