@@ -25,6 +25,7 @@ Route::post('/rooms/{id}', [RoomController::class, 'book']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/about-us', [AboutUsController::class, 'index']);
 Route::get('/contact', [ContactController::class, 'index']);
+Route::post('/contact', [ContactController::class, 'store']);
 Route::get('/offers', [OffersController::class, 'index']);
 
 // Registration

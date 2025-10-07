@@ -9,9 +9,51 @@
 
 @section('css-js')
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 @endsection
 
 @section('content')
+@if(isset($error))
+    <script>
+        Toastify({
+            text: "{{ $error }}",
+            duration: 5000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true,
+            style: {
+                padding: '1.2rem',
+                fontFamily: "Roboto",
+                fontWeight: 700,
+                fontSize: "1.2rem",
+                background: "linear-gradient(to right, red, tomato)",
+            }
+        }).showToast();
+    </script>
+@endif
+@if(isset($success))
+    <script>
+        Toastify({
+            text: "{{ $success }}",
+            duration: 5000,
+            newWindow: true,
+            close: true,
+            gravity: "top",
+            position: "center", 
+            stopOnFocus: true,
+            style: {
+                padding: '1.2rem',
+                fontFamily: "Roboto",
+                fontWeight: 700,
+                fontSize: "1.2rem",
+                background: "linear-gradient(to right, green, #00FF00)",
+            }
+        }).showToast();
+    </script>
+@endif
 <div class="main__header">
     <div class="main__header__bg_color">
         <div class="main__header__text">
@@ -52,21 +94,22 @@
     </div>
 </div>
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d69063.35860657314!2d-74.03526310427458!3d40.71683112727219!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c258fda88cefb3%3A0x7f1e88758d210007!2sAyuntamiento%20de%20Nueva%20York!5e0!3m2!1ses!2ses!4v1742299270612!5m2!1ses!2ses" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-<form action="">
+<form action="/contact" method="POST">
+    @csrf
     <label for="name">
-        <input id="name" type="text" placeholder="Your full name">
+        <input id="name" name="name" type="text" placeholder="Your full name">
     </label>
     <label for="phone">
-        <input id="phone" type="text" placeholder="Add your phone number">
+        <input id="phone" name="phone" type="text" placeholder="Add your phone number">
     </label>
     <label for="email">
-        <input id="email" type="text" placeholder="Enter email address">
+        <input id="email" name="email" type="email" placeholder="Enter email address">
     </label>
     <label for="subject">
-        <input id="subject" type="text" placeholder="Enter subject">
+        <input id="subject" name="subject" type="text" placeholder="Enter subject">
     </label>
     <label for="message">
-        <textarea id="message" placeholder="Enter message" rows="7"></textarea>
+        <textarea id="message" name="message" placeholder="Enter message" rows="7"></textarea>
     </label>
     <input type="submit" value="Send">
 </form>
